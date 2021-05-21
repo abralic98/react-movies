@@ -6,7 +6,7 @@ const RegisterPage = () =>{
     const history = useHistory();
     function RegistrationHandler(registrationData){
         fetch(
-            "https://react-movies-d3075-default-rtdb.firebaseio.com/accounts",
+            "https://react-movies-d3075-default-rtdb.firebaseio.com/accounts.json",
             {
                 method: "POST",
                 body: JSON.stringify(registrationData)
@@ -18,8 +18,11 @@ const RegisterPage = () =>{
     }
     return(
         <div>
-            <img src={backgroundIMG} alt="background-img" className={classes.backgroundIMG}/>
             <div className={classes.background}>
+                <img src={backgroundIMG} alt="background-img" className={classes.backgroundIMG}/>
+            </div>
+            
+            <div className={classes.blackBar}>
                 <RegisterForm onRegister={RegistrationHandler}/>
             </div>
             

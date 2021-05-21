@@ -1,11 +1,5 @@
 .background{
-    display:flex;
-    width:100vw;
-    height:100vh;
-    position:absolute;
-    top:0;
-    justify-content: center;
-    align-items: center;
+    position:fixed;
 }
 .backgroundIMG img{
     position:absolute;
@@ -13,5 +7,12 @@
     left:0;
     z-index:-1;
     width:100vw;
-    height:100vh;
+    height:auto;
+}
+
+.blackBar{
+    position:fixed;
+    top:17vw;
+    
+    left:30vw;
 }
