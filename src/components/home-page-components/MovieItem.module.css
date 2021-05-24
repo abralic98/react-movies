@@ -5,6 +5,7 @@
     margin-bottom:1vw;
     position: relative;
     overflow:hidden;
+    cursor: pointer;
 }
 
 .movieBlock img{

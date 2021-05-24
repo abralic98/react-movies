@@ -12,6 +12,11 @@
     color:white;
     font-family: 'Farro', sans-serif; 
     font-size:1.1vw;
+    cursor:pointer;
+}
+
+.headerList:hover{
+    color:#E50914;
 }
 
 .logo{
@@ -24,4 +29,23 @@
 .userIcon{
     width:5vw;
     height:5vw;
+}
+
+.searchIcon{
+    width:3.2vw;
+    height:auto;
+    cursor:pointer;
+    
+}
+
+.searchDiv{
+    display:flex;
+    justify-content: space-between;
+    width:15vw;
+    align-items: center;
+
+}
+
+.searchDiv input{
+    width:10vw;
 }
