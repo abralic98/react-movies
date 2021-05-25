@@ -1,0 +1,63 @@
+.form{   
+    width:40vw;
+    height:20vw;
+    font-family: 'Farro', sans-serif;
+    display:Flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size:1.5vw;
+    color:white;
+    font-family: 'Farro', sans-serif;
+    background-color: black;
+    border-radius: 2vw;
+}
+input{
+    width:15vw;
+    height:1.5vw;
+    font-family: 'Farro', sans-serif;
+}
+
+.btnLogin{
+    width:12vw;
+    height:6vh;
+    background-color: #1DB954;
+    border-radius: 2vw;
+    border:none;
+    color:white;  
+    font-family: 'Farro', sans-serif;
+    cursor:pointer;
+    margin-bottom:1vw;
+}
+.btnLogin:hover{
+    background-color: #127a37;
+}
+.register{
+    display:Flex;
+    width:80%;
+    justify-content: space-around;
+    font-size:1vw;
+    cursor:pointer;
+}
+
+.register:hover{
+    color: #E50914;
+}
+
+.flexBlock{
+    width:80%; 
+    display:Flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left:auto;
+    margin-right:auto;
+    font-family: 'Farro', sans-serif;   
+}
+.flexBlock:nth-child(1){
+    margin-top:2vw;
+}
+.flexBlock:nth-child(2){
+    margin-left:4.8vw;
+}
+.flexBlock:nth-child(3){
+    margin-left:4.1vw;
+}

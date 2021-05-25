@@ -1,0 +1,27 @@
+.headerBar{
+    width:100vw;
+    height:5vw;
+    background-color: black;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.headerList{
+    list-style-type: none;
+    color:white;
+    font-family: 'Farro', sans-serif; 
+    font-size:1.1vw;
+}
+
+.logo{
+    height:7vw;
+    width:7vw;
+    list-style-type: none;
+    
+}
+
+.userIcon{
+    width:5vw;
+    height:5vw;
+}

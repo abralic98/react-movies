@@ -1,0 +1,60 @@
+.movieBlock{
+    width:15vw;
+    height:25vw;
+    background-color: black;
+    margin-bottom:1vw;
+    position: relative;
+    overflow:hidden;
+}
+
+.movieBlock img{
+    width:15vw;
+    height:20vw;
+}
+
+.title{
+    color:white;
+    font-family: 'Farro', sans-serif; 
+    font-size:0.9vw; 
+    width:10vw;
+}
+
+.title_rating{
+    display:flex;
+    height:5vw;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.rating{
+    color:white;
+    font-family: 'Farro', sans-serif;  
+}
+
+.rating span{
+    color:#f3ce13;
+   
+}
+
+.overview{
+    background-color: red;
+    position:absolute;
+    top:0;
+    background-color: black;
+    color:white;
+    font-size:0.8vw;
+    padding:1vw;
+    font-family: 'Farro', sans-serif;  
+    transform:translate(0,-100%);
+}
+
+.movieBlock:hover .overview{
+    transform:translate(0,0%);
+    transition:0.5s ease-in-out;
+}
+
+.overview:not(:hover){
+    transform:translate(0,-100%);
+    transition:0.5s ease-in-out;
+}
