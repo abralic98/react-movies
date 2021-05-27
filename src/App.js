@@ -3,6 +3,8 @@ import HomePage from "./pages/HomePage"
 import './App.css';
 import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
+import TVshowsPage from "./pages/TVshowsPage"
+
 
 function App() {
   return (
@@ -16,6 +18,9 @@ function App() {
           </Route>
           <Route path="/home">
               <HomePage/>
+          </Route>
+          <Route path="/tvshows">
+              <TVshowsPage/>
           </Route>
         </Switch>
     </div>

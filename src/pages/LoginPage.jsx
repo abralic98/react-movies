@@ -38,6 +38,7 @@ const LoginPage = () =>{
         )
         console.log(login)
         if(login===true){
+
             history.replace("/home")
         }
         
