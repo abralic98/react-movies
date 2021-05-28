@@ -10,13 +10,15 @@ import searchIcon from "../../images/search.png"
 import CategoriesDropDown from "./CategoriesDropDown"
 
 const HeaderHomePage = () =>{
-    const {value2,value3,value4,value5,value6,value7,value8} = useContext(SearchContext);
+    const {value2,value3,value4,value5,value6,value7,value8,value9,value10} = useContext(SearchContext);
     const [searchValue,setSearchValue] = value2;
     const [refresh,setRefresh] = value3;
     const [moviePage,setMoviePage] = value4;
 
     const [tvShowPage,setTvShowPage] = value5;
     const [seriesPage,setSeriesPage] = value6;
+    const [searchValueSeries,setSearchValueSeries] = value9;
+    const [movieCategory,setMovieCategory] = value10;
 
     const [categories,setCategories] =value8;
 
@@ -29,8 +31,14 @@ const HeaderHomePage = () =>{
     
     function submitSearchHandler(e){
         e.preventDefault();
-        const enteredSearch=searchInputRef.current.value;    
-        setSearchValue(enteredSearch);
+        const enteredSearch=searchInputRef.current.value;
+        if(nav===0){
+            setSearchValue(enteredSearch);
+        }
+        if(nav===1){
+            setSearchValueSeries(enteredSearch);
+        }
+        
         console.log(searchValue)
     }
 
@@ -41,9 +49,9 @@ const HeaderHomePage = () =>{
     function fetchNewest(){
         setRefresh(true)
         setNav(0);
+        setMovieCategory(0);
         setMoviePage(1);
-        console.log(refresh);
-        history.replace("/home")
+        history.replace("/movies")
         
     }
 
@@ -51,12 +59,10 @@ const HeaderHomePage = () =>{
         setNav(1);
         setSeriesPage(true);
         setTvShowPage(1);
-        setRefresh(false);
         history.replace("/tvshows")
     }
 
     function showCategories(){
-        console.log(categories)
         setCategories(true);
     }
     function removeCategories(){
@@ -69,8 +75,8 @@ const HeaderHomePage = () =>{
             <img className={classes.logo} src={logo} alt="" />
             <li className={classes.headerList} onClick={fetchNewest}>Movies</li>
             <li onClick={tvShows}className={classes.headerList}>TV Shows</li>
-            <div className={classes.categories}>
-                <li onMouseEnter={showCategories} onMouseLeave={removeCategories} className={classes.headerList}>Categories</li>
+            <div onMouseLeave={removeCategories} className={classes.categories}>
+                <li onClick={showCategories}  className={classes.headerList}>Categories</li>
                 {categories ? <CategoriesDropDown/> : null}
             </div>
             <li className={classes.headerList}>My Favorites</li>

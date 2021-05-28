@@ -39,7 +39,7 @@ const LoginPage = () =>{
         console.log(login)
         if(login===true){
 
-            history.replace("/home")
+            history.replace("/movies")
         }
         
     }

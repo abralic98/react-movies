@@ -6,9 +6,9 @@
     position:absolute;
     top:3vw;
     left:38.5vw;
-    background-color: red;
     z-index: 5;
 }
+
 
 .dropDown{
     width:12vw;
@@ -18,7 +18,7 @@
     display:flex;
     flex-direction: column;
     justify-content: space-around;
-    
+     
 }
 
 .list{
@@ -26,11 +26,18 @@
     font-family: 'Farro', sans-serif;
     color:white;
     cursor: pointer;
+    
 }
 
-.category:hover .dropDown{
-    transition:1s;
-    transform:translate(0,0%);
+
+
+
+.list:nth-child(1){
+    margin-top:2vw;
 }
 
+@keyframes dropdown{
+    0%{transform:translate(0,-100%)}
+    100%{transform:translate(0,0%)}
+}
 

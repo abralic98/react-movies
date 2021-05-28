@@ -8,7 +8,6 @@ const Pagination = () =>{
 
     const {value7} = useContext(SearchContext)
     const [nav,setNav] = value7;
-    console.log(nav)
     return(
         <div>
             {nav===0 ? <PaginationButtonsMovie/> : null }

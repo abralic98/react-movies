@@ -1,5 +1,5 @@
 import { Switch , Route } from "react-router-dom"
-import HomePage from "./pages/HomePage"
+import MoviesPage from "./pages/MoviesPage"
 import './App.css';
 import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
@@ -16,11 +16,14 @@ function App() {
           <Route path="/register">
               <RegisterPage/>
           </Route>
-          <Route path="/home">
-              <HomePage/>
+          <Route path="/movies">
+              <MoviesPage/>
           </Route>
           <Route path="/tvshows">
               <TVshowsPage/>
+          </Route>
+          <Route path="movies/horror">
+              <MoviesPage/>
           </Route>
         </Switch>
     </div>
