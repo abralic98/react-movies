@@ -4,13 +4,8 @@ import './App.css';
 import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
 import TVshowsPage from "./pages/TVshowsPage"
-import { useContext } from "react"
-import { SearchContext } from "./context/SearchContext"
-import MovieInfo from "./components/selected-movie-components/MovieInfo";
-import MovieTrailer from "./components/selected-movie-components/MovieTrailer";
-import HeaderHomePage from "./components/home-page-components/HeaderHomePage";
-import {MovieProvider} from "./context/SearchContext"
 
+import SelectedMoviePage from "./pages/SelectedMoviePage";
 
 function App() {
  
@@ -48,12 +43,7 @@ function App() {
               <MoviesPage/>
           </Route>
           <Route path="/movies/movie">
-              <MovieProvider>
-                {/*<HeaderHomePage/> ne radi popravi */}
-                <MovieInfo/>
-                <MovieTrailer/>
-              </MovieProvider>
-              
+               <SelectedMoviePage/> 
           </Route>
         </Switch>
     </div>

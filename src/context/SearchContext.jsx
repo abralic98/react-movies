@@ -101,8 +101,6 @@ export const MovieProvider = (props) =>{
 
     },[searchValueSeries])
     
-
-    
     useEffect(() =>{
         if(nav===0){
             fetch(FEATURED_MOVIES_API+"&page="+moviePage).then(res => res.json()).then(data =>{       

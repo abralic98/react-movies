@@ -4,10 +4,6 @@ import classes from "../pages/HomePage.module.css"
 import {MovieProvider} from "../context/SearchContext"
 import Pagination from "../components/home-page-components/Pagination"
 
-
-
-
-
 const MoviesPage = () =>{
 
     return(
