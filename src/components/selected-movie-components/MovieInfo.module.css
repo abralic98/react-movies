@@ -74,13 +74,14 @@
     height:10vw;
     background-color: black;
     bottom:0vw;
-    display: flex;
     overflow: hidden;
+    position:relative;
 }
 
 .slides{
     width:18vw;
     height:10vw;
+    transition:1s;
 }
 
 .slides img{
@@ -110,6 +111,15 @@
     transform: rotate(-90deg);
 }
 
+.crno{
+    position:absolute;
+    top:0;
+    width:90vw;
+    height:10vw;
+    display:flex;  
+    transition: 0.5s;
+    
+}
 @keyframes fadeIn{
     0%{opacity:0}
     100%{opacity:1}
@@ -118,4 +128,13 @@
 @keyframes fadeOut{
     0%{opacity:1}
     100%{opacity:0.5};
+}
+
+.yt{
+    width:30vw;
+    height:15vw;
+   
+    position:absolute;
+    top:5vw;
+    right:15vw;
 }

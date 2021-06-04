@@ -43,7 +43,7 @@ export const MovieProvider = (props) =>{
     },[tvShowPage,seriesPage])
 
     useEffect(() =>{
-        if(nav===0 && searchValue!==""){
+        if((nav===0 || nav===2) && searchValue!==""){
             fetch(SEARCH_MOVIES_API+searchValue).then(res => res.json()).then(data =>{
                 console.log("movies search")
                 setMovies(data.results);

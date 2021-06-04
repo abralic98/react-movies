@@ -7,9 +7,10 @@ const IMAGES_API = "https://image.tmdb.org/t/p/w1280"
 const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,id}) =>{
     
     const {value7} = useContext(SearchContext);
-    const {value2} = useContext(MovieContext)
+    const {value2,value3} = useContext(MovieContext)
     const [nav,setNav] = value7;
     const [selectedMovie,setSelectedMovie] = value2;
+    const [selectedTvShow,setSelectedTvShow] = value3;
     const history =useHistory();
 
     
@@ -27,9 +28,23 @@ const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,i
         })
         history.replace("/movies/movie")
     }
+    function selectTvShow(){
+        setSelectedTvShow((prev)=> {
+            return {
+                title:prev.title=title,
+                poster_path:prev.poster_path=poster_path,
+                overview:prev.overview=overview,
+                vote_average:prev.vote_average=vote_average,
+                name:prev.name=name,
+                backdrop_path:prev.backdrop_path=backdrop_path,
+                id:prev.id=id
+            }
+        })
+        history.replace("/tvshows/tvshow")
+    }
  
     return(
-        <div onClick={selectMovie}className={classes.movieBlock}>
+        <div onClick={nav===0 || nav===2 ? selectMovie : selectTvShow}className={classes.movieBlock}>
             <div>
                 <img src={IMAGES_API+poster_path} alt={title} />
             </div>

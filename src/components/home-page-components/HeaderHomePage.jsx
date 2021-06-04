@@ -32,7 +32,7 @@ const HeaderHomePage = () =>{
     function submitSearchHandler(e){
         e.preventDefault();
         const enteredSearch=searchInputRef.current.value;
-        if(nav===0){
+        if(nav===0 || nav===2){
             setSearchValue(enteredSearch);
         }
         if(nav===1){

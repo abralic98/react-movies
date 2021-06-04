@@ -1,25 +1,22 @@
-
 import { useContext,useEffect ,useState, useRef } from "react"
 import { MovieContext } from "../../context/MovieContext"
 import classes from "../selected-movie-components/MovieInfo.module.css"
 import slidearrow from "../../images/slidearrow.png"
 import { SearchContext } from "../../context/SearchContext"
 
-const MovieInfo = () =>{
+const SeriesInfo = () =>{
     const IMAGES_API = "https://image.tmdb.org/t/p/w1280"
-    const {value2} = useContext(MovieContext);
+    const {value3} = useContext(MovieContext);
     const {value7} = useContext(SearchContext)
-    const [selectedMovie,setSelectedMovie] = value2;
+    const [selectedTvShow,setSelectedTvShow] = value3;
     const [images,setImages] = useState ([])
     const [trailer,setTrailer] = useState()
     const [nav,setNav] = value7;
-    console.log("NAV "+nav)
     let arrayOfImages = [];
-    const VIDEO_API= `https://api.themoviedb.org/3/movie/${selectedMovie.id}/videos?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US`
-    const MOREIMAGES_API=`https://api.themoviedb.org/3/movie/${selectedMovie.id}/images?api_key=dfb7945576fbe047b252003d5e79eef7&page&language=en-US&include_image_language=en,null`
+    const VIDEO_API= `https://api.themoviedb.org/3/tv/${selectedTvShow.id}/videos?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US`
+    const MOREIMAGES_API=`https://api.themoviedb.org/3/tv/${selectedTvShow.id}/images?api_key=dfb7945576fbe047b252003d5e79eef7&page&language=en-US&include_image_language=en,null`
     useEffect(() =>{
         fetch(MOREIMAGES_API).then(res => res.json()).then(data =>{   
-            console.log(data.backdrops)
             for(let i=0; i<data.backdrops.length; i++){
                 arrayOfImages.push(data.backdrops[i].file_path)  
             }
@@ -28,10 +25,10 @@ const MovieInfo = () =>{
 
     },[])
     useEffect(() =>{
-        fetch(VIDEO_API).then(res => res.json()).then(data =>{
+        fetch(VIDEO_API).then(res => res.json()).then(data =>{    
             if(data.results.length>0){
                 setTrailer(data.results[0].key)
-            } 
+            }
             
             
         });
@@ -54,11 +51,10 @@ const MovieInfo = () =>{
     }
     function leftArrow(){
         if(sum===0){
-            sum=0;
+            sum=0
         }else{
             sum=sum-18
         }
-        
         testing.current.style.transform=`translate(${-sum}vw)`;
         if(sum<18){
             sum=18
@@ -76,9 +72,9 @@ const MovieInfo = () =>{
         <div className={classes.container}>
             <img className={animate===false ? classes.backgroundAnimate : classes.background} src={IMAGES_API+images[imageNumber]} alt="" />
             <div className={classes.infoBlock}>
-                <h1 className={classes.title}>{selectedMovie.title}</h1>
-                <p className={classes.vote}>{selectedMovie.vote_average} / 10 {<span>&#9733;</span>}</p>
-                <p className={classes.description}>{selectedMovie.overview}</p>
+                <h1 className={classes.title}>{selectedTvShow.name}</h1>
+                <p className={classes.vote}>{selectedTvShow.vote_average} / 10 {<span>&#9733;</span>}</p>
+                <p className={classes.description}>{selectedTvShow.overview}</p>
             </div>
             
             <div className={classes.slider}>
@@ -128,4 +124,5 @@ const MovieInfo = () =>{
     )
 }
 
-export default MovieInfo;
+
+export default SeriesInfo;

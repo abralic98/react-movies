@@ -10,7 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
     <SelectedMovieProvider>
-    <App/> 
+      <App/> 
     </SelectedMovieProvider>
            
     </BrowserRouter>
