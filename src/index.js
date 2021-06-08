@@ -4,13 +4,15 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-router-dom"
 import { SelectedMovieProvider } from "./context/MovieContext"
-
+import { LoginContextProvider } from "./context/LoginContext"
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
     <SelectedMovieProvider>
-      <App/> 
+      <LoginContextProvider>
+        <App/> 
+      </LoginContextProvider>
     </SelectedMovieProvider>
            
     </BrowserRouter>

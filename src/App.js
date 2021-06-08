@@ -7,6 +7,8 @@ import TVshowsPage from "./pages/TVshowsPage"
 
 import SelectedMoviePage from "./pages/SelectedMoviePage";
 import SelectedSeriesPage from "./pages/SelectedSeriesPage";
+import ProfilePage from "./pages/ProfilePage";
+
 
 function App() {
  
@@ -43,11 +45,14 @@ function App() {
           <Route exact path="/movies/romance">
               <MoviesPage/>
           </Route>
-          <Route path="/movies/movie">    
+          <Route exact path="/movies/movie">    
               <SelectedMoviePage/>    
           </Route>
-          <Route path="/tvshows/tvshow">    
+          <Route exact path="/tvshows/tvshow">    
               <SelectedSeriesPage/>    
+          </Route>
+          <Route path="/profile">
+              <ProfilePage/>
           </Route>
         </Switch>
     </div>

@@ -1,0 +1,99 @@
+.infoBlock{
+    display:flex;
+    flex-direction: column;
+    width:35vw;
+    height:auto;
+    min-height: 91vh;
+    background: rgb(22,22,22);
+    background: linear-gradient(90deg, rgba(22,22,22,1) 23%, rgba(11,11,11,0.896796218487395) 51%, rgba(0,0,0,0.7875525210084033) 79%, rgba(0,0,0,0.6138830532212884) 100%);
+    align-items: center;
+    justify-content: space-around;
+}
+
+.infoBlock h2{
+    font-family: 'Farro', sans-serif;
+    margin-top:5vw;
+    font-size:2vw;
+    color:White;
+}
+
+.avatarBlock{
+    width:15vw;
+    height:15vw;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 50%;
+    position:relative;
+    overflow: hidden;
+    
+}
+
+.avatarBlock:hover .blackHoverBlock{
+    display:flex;
+}
+
+.avatar{
+    width:15vw;
+    height:15vw;
+    border-radius: 50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:auto;
+    margin-bottom:auto;
+    overflow: hidden;
+}
+
+.avatar img{
+    width:30vw;
+}
+
+.blackHoverBlock{
+    width:15vw;
+    height:15vw;
+    background-color: black;
+    position:absolute;
+    display:none;
+    align-items: center;
+    justify-content: center;
+    top:0;
+    opacity: 0.9;
+}
+
+.blackHoverBlock p{
+    color:white;
+    cursor: pointer;
+    font-family: 'Farro', sans-serif; 
+}
+
+.infoBlock button{
+    border:none;
+    width:12vw;
+    height:3vw;
+    background-color: #1DB954;
+    font-family: 'Farro', sans-serif;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    cursor:pointer;
+    border-radius: 1vw;
+    margin-bottom:2vw;
+}
+
+.infoBlock button:hover{
+    background-color: #127a37;
+}
+
+.labels{
+    display:flex;
+    width:15vw;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom:1vw;
+    margin-top:1vw;
+}
+.labels p{
+    font-family: 'Farro', sans-serif;
+    color:white;
+}
