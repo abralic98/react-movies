@@ -23,12 +23,12 @@
     height:7vw;
     width:7vw;
     list-style-type: none;
+    
 }
 
 .userIcon{
     width:5vw;
     height:5vw;
-    cursor:pointer;
 }
 
 .searchIcon{
@@ -43,8 +43,10 @@
     justify-content: space-between;
     width:15vw;
     align-items: center;
+
 }
 
 .searchDiv input{
     width:10vw;
 }
+

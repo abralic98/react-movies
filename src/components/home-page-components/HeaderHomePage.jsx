@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom"
 import logo from "../../images/balkanflix.png"
 import icon from "../../images/usericon.png"
 import searchIcon from "../../images/search.png"
+
 import CategoriesDropDown from "./CategoriesDropDown"
 
 const HeaderHomePage = () =>{
@@ -31,7 +32,7 @@ const HeaderHomePage = () =>{
     function submitSearchHandler(e){
         e.preventDefault();
         const enteredSearch=searchInputRef.current.value;
-        if(nav===0 || nav===2){
+        if(nav===0){
             setSearchValue(enteredSearch);
         }
         if(nav===1){
@@ -68,10 +69,6 @@ const HeaderHomePage = () =>{
         setCategories(false)
     }
 
-    function profilePage(){
-        setNav(4);
-        history.replace("/profile")
-    }
     
     return(
         <div className={classes.headerBar}>
@@ -90,7 +87,7 @@ const HeaderHomePage = () =>{
                 <img onClick={submitSearchHandler}className={classes.searchIcon}src={searchIcon} alt="" />
             </div>
             
-            <img onClick={profilePage} className={classes.userIcon}src={icon} alt="" />
+            <img className={classes.userIcon}src={icon} alt="" />
         </div>
     )
 } 

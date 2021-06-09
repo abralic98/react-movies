@@ -2,14 +2,11 @@ import { useHistory } from "react-router-dom"
 import classes from "../pages/LoginPage.module.css"
 import LoginForm from "../components/LoginForm"
 import backgroundIMG from "../images/loginpicture.jpg"
-import { useState , useContext } from "react";
-import { LoginContext } from "../context/LoginContext"
+import { useState } from "react";
 
 
 
 const LoginPage = () =>{
-    const {value2} = useContext(LoginContext)
-    const [loggedAccount,setLoggedAccount] = value2;
     const [login,setLogin] = useState(false);
     const history = useHistory();
     function LoginHandler(loginData){
@@ -17,6 +14,7 @@ const LoginPage = () =>{
             "https://react-movies-d3075-default-rtdb.firebaseio.com/accounts.json",
             
         ).then(response =>{
+            console.log(loginData)
             return response.json();
         }
         ).then(data =>{
@@ -31,19 +29,16 @@ const LoginPage = () =>{
                 
             }
             console.log(dbAccounts)
-            for(let i=0; i<dbAccounts.length; i++){
-                if(dbAccounts[i].name===loginData.name && dbAccounts[i].password===loginData.password){
-                    setLoggedAccount({name:loginData.name,
-                                      email:dbAccounts[i].email,
 
-                                    })
-                    setLogin(true)
-                    console.log("HD");
-                }
+            if(dbAccounts.some(person => person.name === loginData.name && person.password===loginData.password)){
+                setLogin(true);
             }
-            
-        })
+        }
+
+        )
+        console.log(login)
         if(login===true){
+
             history.replace("/movies")
         }
         
