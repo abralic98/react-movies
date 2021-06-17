@@ -1,22 +1,19 @@
-import HeaderHomePage from "../components/home-page-components/HeaderHomePage"
-import MovieItemList from "../components/home-page-components/MovieItemList"
-import classes from "../pages/HomePage.module.css"
-import {MovieProvider} from "../context/SearchContext"
-import Pagination from "../components/home-page-components/Pagination"
+import backgroundIMG from "../images/loginpicture.jpg"
+import classes from "./HomePage.module.css"
+import logo from "../images/balkanflix.png"
+const HomePage = ()=>{
+    return (
+        <div>
+            <div className={classes.background}>
+                <img src={backgroundIMG} alt="background-img" className={classes.backgroundIMG}/>
+            </div>
+            <div className={classes.blackGradient}></div>
+            <div className={classes.logoBlock}><img src={logo} alt="" /></div>
+            <div className={classes.content}>
+                <h1>Unlimited movies, TV shows, and more.</h1>
+                <p>Ready to watch?</p>
+            </div>
 
-
-
-
-
-const HomePage = () =>{
-
-    return(
-        <div className={classes.body}>
-            <MovieProvider>
-                <HeaderHomePage/>
-                <MovieItemList/>
-                <Pagination/>
-            </MovieProvider>           
         </div>
     )
 }

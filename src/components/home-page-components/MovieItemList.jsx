@@ -9,6 +9,7 @@ import {SearchContext} from "../../context/SearchContext"
 const MovieItemList = (props) =>{
     const {value} = useContext(SearchContext);
     const [movies,setMovies] = value;
+    
     movies.splice(18,2)
     return(  
         <div className={classes.list}>

@@ -12,6 +12,7 @@ const Pagination = () =>{
         <div>
             {nav===0 ? <PaginationButtonsMovie/> : null }
             {nav===1 ? <PaginationButtonsSeries/> : null}
+            {nav===2 ? <PaginationButtonsMovie/> : null}
         </div>
     )
     

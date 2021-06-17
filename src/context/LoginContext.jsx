@@ -1,14 +1,22 @@
-
-import { useState, createContext , useEffect } from "react";
+import { createContext, useState } from "react"
 export const LoginContext = createContext();
-export const LoginContextProvider = (props) =>{     
-    const [loggedAccount,setLoggedAccount] = useState({});
+
+export const LoginProvider = (props)=>{
+    const [loginName,setLoginName] = useState();
+    const [account,setAccount] = useState({
+        accountLoginName:"",
+        accountPassword:"",
+        accountEmail:"",
+        accountFullName:"",
+        accountAge:"",
+        accountAvatar:""
+    })
     return (
-        <LoginContext.Provider value={{ 
-            value2: [loggedAccount,setLoggedAccount],
-            
-            }} >
-            {props.children}
+        <LoginContext.Provider value = {{
+            value1:[loginName,setLoginName],
+            accountContext:[account,setAccount]
+        }}>
+        {props.children}
         </LoginContext.Provider>
     )
 }

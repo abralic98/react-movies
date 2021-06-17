@@ -2,43 +2,36 @@ import { useHistory } from "react-router-dom"
 import classes from "../pages/LoginPage.module.css"
 import LoginForm from "../components/LoginForm"
 import backgroundIMG from "../images/loginpicture.jpg"
-import { useState } from "react";
-
+import { useState , useContext } from "react";
+import Axios from "axios"
+import { LoginContext } from "../context/LoginContext"
 
 
 const LoginPage = () =>{
+
     const [login,setLogin] = useState(false);
     const history = useHistory();
+    const {value1,accountContext} = useContext(LoginContext);
+    const [loginName,setLoginName] = value1;
+    const [account,setAccount] = accountContext;
     function LoginHandler(loginData){
-        fetch(
-            "https://react-movies-d3075-default-rtdb.firebaseio.com/accounts.json",
-            
-        ).then(response =>{
-            console.log(loginData)
-            return response.json();
-        }
-        ).then(data =>{
-            const dbAccounts = []
+        
 
-            for(const key in data){
-                const account = {
-                    id:key,
-                    ...data[key]
-                }
-                dbAccounts.push(account)
-                
+        Axios.get("http://localhost:3001/api/login")
+        .then((response)=>{
+            const findAccount = response.data.find((item)=>{
+                return (item.accountLoginName===loginData.name && item.accountPassword===loginData.password)
+            })
+
+            if(findAccount!==undefined){
+                setLoginName(loginData.name)
+                setAccount(findAccount)
+                setLogin(true)
+                console.log(account)
+
             }
-            console.log(dbAccounts)
-
-            if(dbAccounts.some(person => person.name === loginData.name && person.password===loginData.password)){
-                setLogin(true);
-            }
-        }
-
-        )
-        console.log(login)
+        })
         if(login===true){
-
             history.replace("/movies")
         }
         
