@@ -1,0 +1,205 @@
+.body{
+    background-color: rgb(59, 59, 59);
+    width:100vw;
+    min-height:100vh;
+    height:auto;
+}
+
+.background{
+    position:fixed;
+}
+.backgroundIMG img{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-1;
+    width:100vw;
+    height:auto;
+}
+.blackGradient{
+    position:fixed;
+    top:0;
+    width:100vw;
+    height:100vh;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0.9444152661064426) 27%, rgba(0,0,0,0.8099614845938375) 54%, rgba(0,0,0,0.7399334733893557) 81%, rgba(0,0,0,0.5186449579831933) 100%);  
+}
+.logoBlock{
+    width:15vw;
+    height:auto;
+    position:relative;
+    margin-left:5vw;
+    margin-top:1vw;
+}
+.logoBlock img{
+    width:15vw;
+    height:auto;
+    z-index: 5;
+}
+.content{
+    width:100vw;
+    height:auto;
+    position:relative;
+    font-family: 'Farro', sans-serif;
+    color:white;
+    
+}
+.content h1{
+    font-size:2vw;
+}
+.content p{
+    font-size:1.5vw;
+}
+.content .titleBlock button{
+    border:none;
+    width:12vw;
+    height:3vw;
+    background-color: #E50914;
+    color:white;
+    font-family: 'Farro', sans-serif;
+    font-size:1.1vw;
+    cursor:pointer;
+}
+.content .titleBlock button:hover {
+    background-color:rgb(240, 9, 20);
+}
+.content .titleBlock{
+    margin-bottom:5vw;
+}
+.content .tmdb{
+    width:100%;
+    height:auto;
+    background-color: black;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.content .tmdb h2 {
+    padding:1vw;
+}
+.content h2{
+    font-size:2vw;
+}
+.content p{
+    font-size:1.3vw;
+}
+.content img{
+    width:50vw;
+    margin-top:2vw;
+    padding-bottom:2vw;
+}
+.content .greyLine{
+    width:100vw;
+    height:10px;
+    background-color: rgb(63, 63, 63);
+}
+.content .watch{
+    width:100%;
+    height:30vw;
+    background-color: black;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.content .watch img{
+    width:25vw;
+}
+.content .watch .videoPlayer{
+    position:relative;
+    width:20vw;
+    height:15vw;
+    margin-right:5vw;
+}
+.content .watch .videoPlayer img{
+    position:absolute;
+    top:-3vw;
+    left:0;
+    z-index:3;
+}
+.content .watch .videoPlayer video{
+    position:absolute;
+    top:-1vw;
+    left:4.2vw;
+    width:16vw;
+    z-index:2;
+}
+.content .contact{
+    width:100%;
+    height:auto;
+    background-color: black;
+    display:flex;
+    flex-direction: column;
+    padding-bottom:5vw;
+    justify-content: space-around;
+    align-items: center;
+}
+.content form {
+    width:30vw;
+    font-size:1.2vw;
+}
+.content .contact form .contactForm{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:1vw;
+}
+.content .contact form textarea{
+    color:black;
+    font-family: 'Farro', sans-serif;
+}
+.content .contact form button{
+    border:none;
+    width:12vw;
+    display:flex;
+    align-items:center;
+    justify-content: space-around;
+    height:3vw;
+    background-color: #E50914;
+    color:white;
+    font-size:1.1vw;
+    font-family: 'Farro', sans-serif;
+    cursor:pointer;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2vw;
+}
+.content form button img{
+    width:2vw;
+}
+.content .usefulLinks{
+    display:flex;
+    width:100vw;
+    height:auto;
+    background-color: rgb(0, 0, 0);
+    flex-direction: column;
+}
+.content .usefulLinks img{
+    width:15vw;
+}
+.content .usefulLinks .usefulImages{
+    display:flex;
+    margin-top:2vw;
+    margin-bottom:5vw;
+    width:40vw;
+    justify-content: space-around;
+    margin-left:auto;
+    margin-right:auto;
+}
+.content .usefulLinks .usefulImages i {
+    font-size:5vw;
+    cursor:pointer;
+}
+.content .usefulLinks .usefulImages a:nth-child(1) i:hover {
+    color:#6e5494
+}
+.content .usefulLinks .usefulImages a:nth-child(2) i:hover {
+    color:#2867B2;
+}
+.content .usefulLinks .usefulImages a:nth-child(3) i:hover {
+    color:#25D366;
+
+}
+.content a{
+    color:white; 
+}

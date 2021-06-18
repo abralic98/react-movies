@@ -1,0 +1,28 @@
+.background{
+    position:fixed;
+}
+.backgroundIMG img{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-1;
+    width:100vw;
+    height:auto;
+}
+
+.blackBar{
+    position:fixed;
+    top:17vw;
+    z-index: 10;
+    left:30vw;
+}
+
+.blackGradient{
+    position:fixed;
+    top:0;
+    width:100vw;
+    height:100vh;
+    z-index: 5;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0.9444152661064426) 27%, rgba(0,0,0,0.8099614845938375) 54%, rgba(0,0,0,0.7399334733893557) 81%, rgba(0,0,0,0.5186449579831933) 100%);
+}

@@ -1,0 +1,51 @@
+.headerBar{
+    width:100vw;
+    height:5vw;
+    background-color: black;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.headerList{
+    list-style-type: none;
+    color:white;
+    font-family: 'Farro', sans-serif; 
+    font-size:1.1vw;
+    cursor:pointer;
+}
+
+.headerList:hover{
+    color:#E50914;
+}
+
+.logo{
+    height:7vw;
+    width:7vw;
+    list-style-type: none;
+}
+
+.userIcon{
+    width:4vw;
+    height:4vw;
+    cursor:pointer;
+    border-radius:50%;
+}
+
+.searchIcon{
+    width:3.2vw;
+    height:auto;
+    cursor:pointer;
+    
+}
+
+.searchDiv{
+    display:flex;
+    justify-content: space-between;
+    width:15vw;
+    align-items: center;
+}
+
+.searchDiv input{
+    width:10vw;
+}

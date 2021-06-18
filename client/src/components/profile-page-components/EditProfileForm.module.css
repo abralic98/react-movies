@@ -1,0 +1,60 @@
+.body{
+    width:65vw;
+    min-height:90vh;
+    background-color: rgb(12, 12, 12);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form{
+    width:40vw;
+    height:30vw;
+    background-color: black;
+    border-radius:3vw;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.label{
+    color:white;
+    font-family: 'Farro', sans-serif;
+}
+
+.labelInputBlock{
+    display:flex;
+    flex-direction: column;
+    width:35vw;
+    height:15vw;
+    justify-content: space-around;
+}
+.labelInput{ 
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:7vw;
+    margin-right:2vw;
+    
+}
+.button{
+    border:none;
+    width:12vw;
+    height:3vw;
+    background-color: #1DB954;
+    font-family: 'Farro', sans-serif;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    cursor:pointer;
+    border-radius: 1vw;
+    
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.button:hover{
+    background-color: #127a37;
+}

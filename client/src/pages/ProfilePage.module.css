@@ -1,0 +1,10 @@
+.body{
+    background-color: rgb(59, 59, 59);
+    width:100vw;
+    min-height:100vh;
+    height:auto;
+}
+
+.flexBox{
+    display:flex;
+}
