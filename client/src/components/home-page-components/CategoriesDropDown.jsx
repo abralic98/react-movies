@@ -2,40 +2,42 @@ import classes from "./CategoriesDropDown.module.css"
 import { Link } from "react-router-dom"
 import { SearchContext } from "../../context/SearchContext"
 import { useContext } from "react"
+import { LoginContext } from "../../context/LoginContext"
 const CategoriesDropDown = () =>{
-    const {value7,value10,value4}= useContext(SearchContext)
+    const {value4}= useContext(SearchContext)
+    const {navigation1,value10} = useContext(LoginContext)
+    const [navigation,setNavigation] = navigation1
     const [movieCategory,setMovieCategory] = value10;
-    const [nav,setNav] = value7;
     const [moviesPage,setMoviesPage] = value4;
     
 
     function Horror(){
-        setNav(2);
+        setNavigation(2)
         setMoviesPage(1);
         setMovieCategory(2);
     }
     function Action(){
-        setNav(2);
+        setNavigation(2)
         setMoviesPage(1);
         setMovieCategory(1);  
     }
     function SciFi(){
-        setNav(2);
+        setNavigation(2)
         setMoviesPage(1);
         setMovieCategory(3);
     }
     function Mystery(){
-        setNav(2);
+        setNavigation(2)
         setMoviesPage(1);
         setMovieCategory(4)
     }
     function Comedy(){
-        setNav(2);
+        setNavigation(2)
         setMoviesPage(1);
         setMovieCategory(5);
     }
     function Romance(){
-        setNav(2);
+        setNavigation(2)
         setMoviesPage(1);
         setMovieCategory(6);
     }

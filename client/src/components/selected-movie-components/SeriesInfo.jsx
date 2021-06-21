@@ -2,16 +2,16 @@ import { useContext,useEffect ,useState, useRef } from "react"
 import { MovieContext } from "../../context/MovieContext"
 import classes from "../selected-movie-components/MovieInfo.module.css"
 import slidearrow from "../../images/slidearrow.png"
-import { SearchContext } from "../../context/SearchContext"
+import { LoginContext } from "../../context/LoginContext"
 
 const SeriesInfo = () =>{
     const IMAGES_API = "https://image.tmdb.org/t/p/w1280"
     const {value3} = useContext(MovieContext);
-    const {value7} = useContext(SearchContext)
+    const {navigation1} = useContext(LoginContext)
     const [selectedTvShow,setSelectedTvShow] = value3;
     const [images,setImages] = useState ([])
     const [trailer,setTrailer] = useState()
-    const [nav,setNav] = value7;
+    const [navigation,setNavigation] = navigation1;
     let arrayOfImages = [];
     const VIDEO_API= `https://api.themoviedb.org/3/tv/${selectedTvShow.id}/videos?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US`
     const MOREIMAGES_API=`https://api.themoviedb.org/3/tv/${selectedTvShow.id}/images?api_key=dfb7945576fbe047b252003d5e79eef7&page&language=en-US&include_image_language=en,null`
@@ -67,7 +67,7 @@ const SeriesInfo = () =>{
             sum=72
         }
     }
-    console.log(trailer)
+    
     return(
         <div className={classes.container}>
             <img className={animate===false ? classes.backgroundAnimate : classes.background} src={IMAGES_API+images[imageNumber]} alt="" />
@@ -116,8 +116,11 @@ const SeriesInfo = () =>{
                 </div>
                 <img onClick={rightArrow} className={classes.arrow} src={slidearrow} alt="" />
             </div>
-            <div className={classes.yt}>
-                <iframe width="700" height="400" src={`https://www.youtube.com/embed/${trailer}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            <div className={classes.trailerFlexBox}>
+                <div className={classes.yt}>
+                    <iframe width="700" height="400" src={`https://www.youtube.com/embed/${trailer}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                </div>
+                <div className={classes.btnFavorites}>Add to Favorites</div>
             </div>
         </div>
         

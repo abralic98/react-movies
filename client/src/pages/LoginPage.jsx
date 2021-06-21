@@ -11,9 +11,10 @@ const LoginPage = () =>{
 
     const [login,setLogin] = useState(false);
     const history = useHistory();
-    const {value1,accountContext} = useContext(LoginContext);
+    const {value1,accountContext,accountFavoriteList1} = useContext(LoginContext);
     const [loginName,setLoginName] = value1;
     const [account,setAccount] = accountContext;
+    const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1;
     function LoginHandler(loginData){
         
 
@@ -27,7 +28,6 @@ const LoginPage = () =>{
                 setLoginName(loginData.name)
                 setAccount(findAccount)
                 setLogin(true)
-                console.log(account)
 
             }
         })

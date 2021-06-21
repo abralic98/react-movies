@@ -3,23 +3,28 @@ import { useContext,useEffect ,useState, useRef } from "react"
 import { MovieContext } from "../../context/MovieContext"
 import classes from "../selected-movie-components/MovieInfo.module.css"
 import slidearrow from "../../images/slidearrow.png"
+import { LoginContext } from "../../context/LoginContext"
+import Axios from "axios"
 import { SearchContext } from "../../context/SearchContext"
 
 const MovieInfo = () =>{
     const IMAGES_API = "https://image.tmdb.org/t/p/w1280"
     const {value2} = useContext(MovieContext);
-    const {value7} = useContext(SearchContext)
+    const {navigation1,accountContext,accountFavoriteList1,accountFavoriteItem1} = useContext(LoginContext)
+    const {value} = useContext(SearchContext)
     const [selectedMovie,setSelectedMovie] = value2;
     const [images,setImages] = useState ([])
     const [trailer,setTrailer] = useState()
-    const [nav,setNav] = value7;
-    console.log("NAV "+nav)
+    const [navigation,setNavigation] = navigation1;
+    const [account,setAccount] = accountContext;
+    const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1;
+    const [accountFavoriteItem,setAccountFavoriteItem] = accountFavoriteItem1
+    const [movies,setMovies] = value
     let arrayOfImages = [];
     const VIDEO_API= `https://api.themoviedb.org/3/movie/${selectedMovie.id}/videos?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US`
     const MOREIMAGES_API=`https://api.themoviedb.org/3/movie/${selectedMovie.id}/images?api_key=dfb7945576fbe047b252003d5e79eef7&page&language=en-US&include_image_language=en,null`
     useEffect(() =>{
         fetch(MOREIMAGES_API).then(res => res.json()).then(data =>{   
-            console.log(data.backdrops)
             for(let i=0; i<data.backdrops.length; i++){
                 arrayOfImages.push(data.backdrops[i].file_path)  
             }
@@ -71,7 +76,15 @@ const MovieInfo = () =>{
             sum=72
         }
     }
-    console.log(trailer)
+
+    function addFavoriteHandler(){
+        setAccountFavoriteList((prev)=>[...prev, selectedMovie])
+        console.log(accountFavoriteList)
+        Axios.put("http://localhost:3001/api/edit/account/favorites",{
+            updateFavorites:JSON.stringify(accountFavoriteList),
+            accountLoginName:account.accountLoginName
+        })
+    }
     return(
         <div className={classes.container}>
             <img className={animate===false ? classes.backgroundAnimate : classes.background} src={IMAGES_API+images[imageNumber]} alt="" />
@@ -80,7 +93,7 @@ const MovieInfo = () =>{
                 <p className={classes.vote}>{selectedMovie.vote_average} / 10 {<span>&#9733;</span>}</p>
                 <p className={classes.description}>{selectedMovie.overview}</p>
             </div>
-            
+        
             <div className={classes.slider}>
                 <img onClick={leftArrow} className={classes.arrow} src={slidearrow} alt="" />
                 <div className={classes.imageBlock}>
@@ -115,14 +128,17 @@ const MovieInfo = () =>{
                         <div onClick={() => changeBackground(9)} className={imageNumber===9 ? classes.transition : classes.slides}>
                             <img src={IMAGES_API+images[9]} alt="" />
                         </div>
-                    </div>
-                    
+                    </div>             
                 </div>
                 <img onClick={rightArrow} className={classes.arrow} src={slidearrow} alt="" />
             </div>
-            <div className={classes.yt}>
-                <iframe width="700" height="400" src={`https://www.youtube.com/embed/${trailer}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            <div className={classes.trailerFlexBox}>
+                {/*<div className={classes.yt}>
+                    <iframe width="700" height="400" src={`https://www.youtube.com/embed/${trailer}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                </div>*/}
+                <div onClick={addFavoriteHandler}className={classes.btnFavorites}>Add to Favorites</div>
             </div>
+            
         </div>
         
     )

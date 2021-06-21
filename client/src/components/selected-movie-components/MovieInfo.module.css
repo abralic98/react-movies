@@ -133,8 +133,50 @@
 .yt{
     width:30vw;
     height:15vw;
-   
+    margin-right:6vw;
+}
+
+.btnFavorites{
+    width:15vw;
+    height:3vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1DB954;
+    color:white;  
+    font-family: 'Farro', sans-serif;
+    cursor:pointer;
+    border-radius:1vw;
+}
+.btnFavorites:hover{
+    background-color: #127a37;
+}
+
+.btnUnFavorites{
+    width:15vw;
+    height:3vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E50914;
+    color:white;  
+    font-family: 'Farro', sans-serif;
+    cursor:pointer;
+    border-radius:1vw;
+}
+
+.btnUnFavorites:hover{
+    background-color: #ad0b13;
+}
+
+.trailerFlexBox{
+    display:flex;
+    width:58vw;
+    height:35vw;
     position:absolute;
-    top:5vw;
-    right:15vw;
+    top:0;
+    right:0;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }

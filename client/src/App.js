@@ -8,7 +8,7 @@ import HomePage from "./pages/HomePage"
 import SelectedMoviePage from "./pages/SelectedMoviePage";
 import SelectedSeriesPage from "./pages/SelectedSeriesPage";
 import ProfilePage from "./pages/ProfilePage";
-
+import FavoritesPage from "./pages/FavoritesPage";
 
 function App() {
  
@@ -56,6 +56,9 @@ function App() {
           </Route>
           <Route path="/home">
               <HomePage/>
+          </Route>
+          <Route path="/favorites">
+              <FavoritesPage/>
           </Route>
         </Switch>
     </div>

@@ -1,18 +1,17 @@
 import classes from "./MovieItem.module.css"
-import { SearchContext } from "../../context/SearchContext"
 import { useContext ,useEffect } from "react";
 import { useHistory } from "react-router-dom"
 import { MovieContext } from "../../context/MovieContext";
+import { LoginContext } from "../../context/LoginContext";
 const IMAGES_API = "https://image.tmdb.org/t/p/w1280"
 const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,id}) =>{
     
-    const {value7} = useContext(SearchContext);
     const {value2,value3} = useContext(MovieContext)
-    const [nav,setNav] = value7;
     const [selectedMovie,setSelectedMovie] = value2;
     const [selectedTvShow,setSelectedTvShow] = value3;
     const history =useHistory();
-
+    const {navigation1} = useContext (LoginContext);
+    const [navigation,setNavigation] = navigation1
     
     function selectMovie(){
         setSelectedMovie((prev)=> {
@@ -44,12 +43,12 @@ const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,i
     }
  
     return(
-        <div onClick={nav===0 || nav===2 ? selectMovie : selectTvShow}className={classes.movieBlock}>
+        <div onClick={navigation===0 || navigation===2 || navigation===3 ? selectMovie : selectTvShow}className={classes.movieBlock}>
             <div>
                 <img src={IMAGES_API+poster_path} alt={title} />
             </div>
             <div className={classes.title_rating}>
-                <p className={classes.title}>{nav===0 || nav===2 ? title : name }</p>
+                <p className={classes.title}>{navigation===0 || navigation===2 ? title : name }</p>
                 <p className={classes.rating}>{vote_average}{<span>&#9733;</span>}</p>
             </div>
             <div className={classes.overview}>

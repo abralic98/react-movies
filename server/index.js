@@ -42,6 +42,15 @@ app.put("/api/edit/account", (req,res)=>{
     })
 })
 
+app.put("/api/edit/account/favorites",(req,res)=>{
+    const updateFavorites = req.body.updateFavorites;
+    const accountLoginName = req.body.accountLoginName;
+    const sqlUpdate = "UPDATE account_details SET accountFavorites = ? WHERE accountLoginName = ?"
+    db.query(sqlUpdate, [updateFavorites, accountLoginName],(err,res) =>{
+        console.log(err)
+    })
+})
+
 app.get("/api/accounts", (req,res)=>{
     const sqlSelect = "SELECT * FROM account_details"
     db.query(sqlSelect, (err,result)=>{

@@ -1,5 +1,6 @@
-import { useState, createContext , useEffect } from "react";
-
+import { useState, createContext , useEffect ,useContext} from "react";
+import { LoginContext } from "./LoginContext";
+import Axios from "axios";
 export const SearchContext = createContext();
 
 export const MovieProvider = (props) =>{
@@ -17,30 +18,29 @@ export const MovieProvider = (props) =>{
 
     //const TEST= "https://api.themoviedb.org/3/genre/movie/list?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US" for getting category ids
     
-    const [nav,setNav] = useState(0); // home page  0=> tv shows 1=> ..
-
+    const {navigation1,value10,accountFavoriteList1} = useContext(LoginContext);
+    const [navigation,setNavigation] = navigation1; //home page  0=> tv shows 1=> ..
     const [movies, setMovies] = useState([]);
     const [searchValue,setSearchValue] = useState("");
     const [moviePage,setMoviePage] = useState(1);
-    const [movieCategory,setMovieCategory] = useState(0); //0 default 1 action 2 horror 3 scifi 4 mystery 5 comedy 6 romantic
-    const [selectedMovie,setSelectedMovie] = useState([]);
-
+    const [movieCategory,setMovieCategory] = value10;
+    const [selectedMovie,setSelectedMovie] = useState({});
     const [searchValueSeries,setSearchValueSeries] = useState();
     const [tvShowPage,setTvShowPage] = useState(1);
-    
+    const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1
     useEffect(() =>{
-        if(nav===1)
+        if(navigation===1)
         fetch(FEATURED_TV_SHOWS_API+"&page="+tvShowPage).then(res => res.json()).then(data =>{       
             
             console.log("najnovije serije")
-            console.log(nav);
+            console.log(navigation);
             setMovies(data.results)
         });
 
-    },[tvShowPage,nav])
+    },[tvShowPage,navigation])
 
     useEffect(() =>{
-        if((nav===0 || nav===2) && searchValue!==""){
+        if((navigation===0 || navigation===2) && searchValue!==""){
             fetch(SEARCH_MOVIES_API+searchValue).then(res => res.json()).then(data =>{
                 console.log("movies search")
                 setMovies(data.results);
@@ -49,37 +49,37 @@ export const MovieProvider = (props) =>{
     },[searchValue])
 
     useEffect(() =>{
-        if(nav===2 && movieCategory===2){
+        if(navigation===2 && movieCategory===2){
             fetch(HORROR_API+"&page="+moviePage).then(res => res.json()).then(data =>{       
                 setMovies(data.results);
                 console.log("horror")
             });
         }
-        if(nav===2 && movieCategory===1){
+        if(navigation===2 && movieCategory===1){
             fetch(ACTION_API+"&page="+moviePage).then(res => res.json()).then(data =>{       
                 setMovies(data.results);
                 console.log("action")
             });
         }
-        if(nav===2 && movieCategory===3){
+        if(navigation===2 && movieCategory===3){
             fetch(SCIFI_API+"&page="+moviePage).then(res => res.json()).then(data =>{       
                 setMovies(data.results);
                 console.log("scifi")
             });
         }
-        if(nav===2 && movieCategory===4){
+        if(navigation===2 && movieCategory===4){
             fetch(MYSTERY_API+"&page="+moviePage).then(res => res.json()).then(data =>{       
                 setMovies(data.results);
                 console.log("mystery")
             });
         }
-        if(nav===2 && movieCategory===5){
+        if(navigation===2 && movieCategory===5){
             fetch(COMEDY_API+"&page="+moviePage).then(res => res.json()).then(data =>{       
                 setMovies(data.results);
                 console.log("comedy")
             });
         }
-        if(nav===2 && movieCategory===6){
+        if(navigation===2 && movieCategory===6){
             fetch(ROMANCE_API+"&page="+moviePage).then(res => res.json()).then(data =>{       
                 setMovies(data.results);
                 console.log("romance")
@@ -88,7 +88,7 @@ export const MovieProvider = (props) =>{
     },[movieCategory,moviePage])
 
     useEffect(() =>{
-        if(nav===1 && searchValueSeries!==""){
+        if(navigation===1 && searchValueSeries!==""){
             fetch(SEARCH_TV_SHOWS+searchValueSeries).then(res => res.json()).then(data =>{      
                 console.log("serije search")
                 setMovies(data.results);       
@@ -99,16 +99,22 @@ export const MovieProvider = (props) =>{
     },[searchValueSeries])
     
     useEffect(() =>{
-        if(nav===0){
+        if(navigation===3){
+            setMovies(accountFavoriteList)   
+        }
+        
+    },[accountFavoriteList,navigation])
+    useEffect(() =>{
+        if(navigation===0){
             fetch(FEATURED_MOVIES_API+"&page="+moviePage).then(res => res.json()).then(data =>{       
                 setMovies(data.results);
                 console.log("filmovi")
-                console.log(nav)
+                console.log(navigation)
             });
         }
         
 
-    },[moviePage,nav])
+    },[moviePage,navigation])
 
     const[categories,setCategories] = useState(false);
 
@@ -120,10 +126,8 @@ export const MovieProvider = (props) =>{
             value2: [searchValue, setSearchValue] ,  
             value4:[moviePage,setMoviePage],
             value5:[tvShowPage,setTvShowPage],
-            value7:[nav,setNav],
             value8:[categories,setCategories],
             value9:[searchValueSeries,setSearchValueSeries],
-            value10:[movieCategory,setMovieCategory],
             value11:[selectedMovie,setSelectedMovie]}} >
             {props.children}
         </SearchContext.Provider>
