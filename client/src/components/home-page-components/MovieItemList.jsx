@@ -13,13 +13,15 @@ const MovieItemList = (props) =>{
     if(navigation!==3){
         movies.splice(18,2)
     }
-    console.log(movies)
+    if(navigation===3){
+        console.log(accountFavoriteList, "MOVIE ITEM LIST")
+    }
     
     return(  
         <div className={classes.list}>
-            {movies.map(movie => (
+            {movies!==null ? movies.map(movie => (
                 <MovieItem key={movie.id} {...movie}/>
-            ))}
+            )) : console.log("kek")}
         </div>
     )
     

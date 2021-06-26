@@ -203,3 +203,215 @@
 .content a{
     color:white; 
 }
+@media only screen and (max-width: 1700px){
+    .content .watch .videoPlayer video{
+        margin-top:-1vw;
+    }
+    .content .contact form input{
+        width:18.5vw;
+        font-size:1.2vw;
+        height:2vw;
+    }
+}
+@media only screen and (max-width: 1600px){
+    .content .watch .videoPlayer video{
+        margin-top:-1vw;
+    }
+    .content .contact form input{
+        width:18.5vw;
+        font-size:1.2vw;
+        height:2vw;
+    }
+}
+@media only screen and (max-width: 1500px){
+    .content .watch .videoPlayer video{
+        margin-top:-2vw;
+    }
+    .content .contact form input{
+        width:18.5vw;
+        font-size:1.2vw;
+        height:2vw;
+    }
+}
+@media only screen and (max-width: 1400px){
+    .content .watch .videoPlayer video{
+        margin-top:-2vw;
+    }
+    .content .contact h2{
+        font-size:4vw;
+     }
+     .content .contact p{
+         font-size:2vw;
+         margin-top:-1vw;
+     }
+     .content .contact form{
+         width:80vw;
+     }
+     .content .contact form label{
+         font-size:2vw;
+     }
+     .content .contact form input{
+         width:50vw;
+         font-size:1.2vw;
+         height:2vw;
+     }
+     .content .contact form button{
+         width:30vw;
+         height:4vw;
+         margin-top:6vw;
+         font-size:2vw;
+     }
+     .content .contact form textarea{
+         width:50vw;
+         font-size:1.5vw;
+     }
+}
+@media only screen and (max-width: 1300px){
+    .content .watch .videoPlayer video{
+        margin-top:-3vw;
+    }
+    .content .contact h2{
+        font-size:4vw;
+     }
+     .content .contact p{
+         font-size:2vw;
+         margin-top:-1vw;
+     }
+     .content .contact form{
+         width:80vw;
+     }
+     .content .contact form label{
+         font-size:2vw;
+     }
+     .content .contact form input{
+         width:50vw;
+         font-size:1.5vw;
+         height:3vw;
+     }
+     .content .contact form button{
+         width:30vw;
+         height:4vw;
+         margin-top:6vw;
+         font-size:2vw;
+     }
+     .content .contact form textarea{
+         width:50vw;
+         font-size:1.5vw;
+     }
+  }
+@media only screen and (max-width: 1200px) {
+    
+     .content .titleBlock h1{
+         font-size:4vw;
+     }
+     .content .titleBlock p{
+         font-size:3vw;
+     }
+     .content .titleBlock button{
+         width:20vw;
+         height:5vw;
+         font-size:2vw;
+     }
+     .content .tmdb h2{
+        font-size:4vw;
+     }
+     .content .tmdb p{
+         font-size:2vw;
+         width:80vw;
+         margin-top:-1vw;
+     }
+     .content .tmdb a{
+         margin-top:1vw;
+     }
+     .content .watch h2{
+        font-size:3vw;
+     }
+     .content .watch p{
+         font-size:1.8vw;
+         width:50vw;
+     }
+     .content .watch .videoPlayer video{
+         margin-top:-4vw;
+     }
+     .content .contact h2{
+        font-size:4vw;
+     }
+     .content .contact p{
+         font-size:2vw;
+         margin-top:-1vw;
+     }
+     .content .contact form{
+         width:80vw;
+     }
+     .content .contact form label{
+         font-size:3vw;
+     }
+     .content .contact form input{
+         width:50vw;
+         font-size:2vw;
+         height:4vw;
+     }
+     .content .contact form button{
+         width:30vw;
+         height:5vw;
+         margin-top:6vw;
+         font-size:2vw;
+     }
+     .content .contact form textarea{
+         width:50vw;
+         font-size:2vw;
+     }
+     .content .usefulLinks h2{
+         font-size:4vw;
+     }
+     .content .usefulLinks .usefulImages {
+         width:70vw;
+     }
+     .content .usefulLinks .usefulImages i{
+         font-size:8vw;
+     }
+  }
+  @media only screen and (max-width: 1100px){
+    .content .watch .videoPlayer video{
+        margin-top:-5vw;
+    }
+  }
+  @media only screen and (max-width: 1000px){
+    .content .watch .videoPlayer video{
+        margin-top:-5.5vw;
+    }
+  }
+  @media only screen and (max-width: 900px){
+    .content .watch .videoPlayer video{
+        margin-top:-7vw;
+    }
+  }
+  @media only screen and (max-width: 800px){
+    .content .watch .videoPlayer video{
+        margin-top:-9vw;
+    }
+  }
+  @media only screen and (max-width: 700px){
+    .content .watch .videoPlayer video{
+        margin-top:-11vw;
+    }
+  }
+  @media only screen and (max-width: 600px){
+    .content .watch .videoPlayer video{
+        margin-top:-14vw;
+    }
+    .content .watch p{
+        font-size:2vw;
+        width:50vw;
+    }
+  }
+  @media only screen and (max-width: 500px){
+    .content .watch .videoPlayer video{
+        margin-top:-18vw;
+    }
+  }
+  @media only screen and (max-width: 400px){
+    .content .watch .videoPlayer video{
+        margin-top:-23vw;
+    }
+  }

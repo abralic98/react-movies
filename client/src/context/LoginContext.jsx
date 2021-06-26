@@ -16,6 +16,7 @@ export const LoginProvider = (props)=>{
         accountAvatar:"",
         accountFavorites:""
     })
+    console.log("EXPORT ",accountFavoriteList)
     return (
         <LoginContext.Provider value = {{
             value1:[loginName,setLoginName],

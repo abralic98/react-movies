@@ -7,12 +7,20 @@
     align-items: center;
 }
 
+.headerBarMobile{
+    display:none;
+}
+
 .headerList{
     list-style-type: none;
     color:white;
     font-family: 'Farro', sans-serif; 
     font-size:1.1vw;
     cursor:pointer;
+}
+
+.headerBarMobileTop{
+    display:none;
 }
 
 .headerList:hover{
@@ -48,4 +56,57 @@
 
 .searchDiv input{
     width:10vw;
+}
+
+@media only screen and (max-width:1000px){
+    .headerBar{
+        display:none;
+    }
+    .headerBarMobile{
+        display:flex;
+        flex-direction: column;
+        width:100vw;
+        height:100vh;
+        position:fixed;
+        top:0;
+        left:0;
+        z-index:5;
+        background-color: black;
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+        transform:translate(100vw);
+        transition:1s;
+    }
+    .headerBarMobile .headerList{
+        font-size:3vw;
+    }
+
+    .headerBarMobileTop{
+        display:flex;
+        background-color: black;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .headerBarMobileTop .logo{
+        width:13vw;
+        height:13vw;
+    }
+    .headerBarMobileTop .mobileMenuIcon{
+        width:13vw;
+        height:13vw;
+    }
+    .headerBarMobileTop form input{
+        width:25vw;
+        height:4vw;
+    }
+    .headerBarMobileTop form {
+        display:flex;
+        width:35vw;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .headerBarMobileTop form .searchIcon{
+        width:8vw;
+    }
 }

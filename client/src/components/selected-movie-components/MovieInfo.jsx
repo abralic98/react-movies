@@ -78,12 +78,30 @@ const MovieInfo = () =>{
     }
 
     function addFavoriteHandler(){
-        setAccountFavoriteList((prev)=>[...prev, selectedMovie])
+        /*if(accountFavoriteList!==null){
+            setAccountFavoriteList((prev)=>{
+                return prev=[...prev,selectedMovie]
+            })
+        }else{
+            setAccountFavoriteList([])
+        }
         console.log(accountFavoriteList)
         Axios.put("http://localhost:3001/api/edit/account/favorites",{
             updateFavorites:JSON.stringify(accountFavoriteList),
             accountLoginName:account.accountLoginName
+        })*/
+        if(accountFavoriteList!==null){
+            setAccountFavoriteList([...accountFavoriteList,selectedMovie])
+        }else{
+            setAccountFavoriteList([])
+        }
+        console.log(accountFavoriteList)
+        
+        Axios.put("http://localhost:3001/api/edit/account/favorites",{
+            updateFavorites:JSON.stringify(accountFavoriteList),
+            accountLoginName:account.accountLoginName
         })
+        
     }
     return(
         <div className={classes.container}>

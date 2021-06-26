@@ -59,3 +59,78 @@
     transform:translate(0,-100%);
     transition:0.5s ease-in-out;
 }
+
+@media only screen and (max-width:1300px){
+    .movieBlock{
+        width:18vw;
+        height:28vw;
+        background-color: black;
+        margin-bottom:1vw;
+        position: relative;
+        overflow:hidden;
+        cursor: pointer;
+    }
+    .movieBlock img{
+        width:18vw;
+        height:23vw;
+    }
+}
+
+@media only screen and (max-width:1100px){
+    .movieBlock{
+        width:23vw;
+        height:36vw;
+        background-color: black;
+        margin-bottom:1vw;
+        position: relative;
+        overflow:hidden;
+        cursor: pointer;
+    }
+    .movieBlock img{
+        width:23vw;
+        height:30vw;
+    }
+
+    .title{
+        color:white;
+        font-family: 'Farro', sans-serif; 
+        font-size:1.3vw; 
+        width:10vw;
+    }
+
+    .overview{
+        font-size:1.3vw;
+        
+    }
+}
+
+@media only screen and (max-width:1000px){
+    .movieBlock{
+        width:30vw;
+        height:45vw;
+        background-color: black;
+        margin-bottom:1vw;
+        position: relative;
+        overflow:hidden;
+        cursor: pointer;
+    }
+    .movieBlock img{
+        width:30vw;
+        height:37vw;
+    }
+
+    .title{
+        color:white;
+        font-family: 'Farro', sans-serif; 
+        font-size:1.4vw; 
+        width:12vw;
+    }
+
+    .overview{
+        font-size:1.3vw;
+        
+    }
+    .title_rating{
+        height:8vw;
+    }
+}

@@ -27,8 +27,8 @@ const LoginPage = () =>{
             if(findAccount!==undefined){
                 setLoginName(loginData.name)
                 setAccount(findAccount)
+                setAccountFavoriteList(JSON.parse(findAccount.accountFavorites))
                 setLogin(true)
-
             }
         })
         if(login===true){

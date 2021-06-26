@@ -18,7 +18,7 @@ export const MovieProvider = (props) =>{
 
     //const TEST= "https://api.themoviedb.org/3/genre/movie/list?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US" for getting category ids
     
-    const {navigation1,value10,accountFavoriteList1} = useContext(LoginContext);
+    const {navigation1,value10,accountFavoriteList1,accountContext} = useContext(LoginContext);
     const [navigation,setNavigation] = navigation1; //home page  0=> tv shows 1=> ..
     const [movies, setMovies] = useState([]);
     const [searchValue,setSearchValue] = useState("");
@@ -28,6 +28,9 @@ export const MovieProvider = (props) =>{
     const [searchValueSeries,setSearchValueSeries] = useState();
     const [tvShowPage,setTvShowPage] = useState(1);
     const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1
+    const [account,setAccount] = accountContext;
+
+
     useEffect(() =>{
         if(navigation===1)
         fetch(FEATURED_TV_SHOWS_API+"&page="+tvShowPage).then(res => res.json()).then(data =>{       
@@ -97,13 +100,22 @@ export const MovieProvider = (props) =>{
         
 
     },[searchValueSeries])
-    
     useEffect(() =>{
-        if(navigation===3){
-            setMovies(accountFavoriteList)   
-        }
-        
-    },[accountFavoriteList,navigation])
+        if(navigation===3){ // popravit treba ne radi
+            Axios.get("http://localhost:3001/api/get/account/favorites")
+            .then(
+                (response)=>{
+                    const findAccount = response.data.find((item)=>{
+                        return (item.accountLoginName===account.accountLoginName)
+                    })
+                    if(findAccount.accountFavorites!==undefined || findAccount.accountFavorites!==null){
+                        setMovies(JSON.parse(findAccount.accountFavorites))
+                    }
+                    
+                }
+            )
+        }     
+    },[navigation])
     useEffect(() =>{
         if(navigation===0){
             fetch(FEATURED_MOVIES_API+"&page="+moviePage).then(res => res.json()).then(data =>{       

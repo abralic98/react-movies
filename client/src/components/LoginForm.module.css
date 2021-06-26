@@ -63,4 +63,73 @@ input{
 .flexBlock:nth-child(2){
     margin-left:4.1vw;
 }
-
+@media only screen and (max-width: 1000px){
+    .form{   
+        width:80vw;
+        height:80vh;
+        font-family: 'Farro', sans-serif;
+        display:Flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-size:4vw;
+        color:white;
+        font-family: 'Farro', sans-serif;
+        background-color: black;
+        border-radius: 2vw;
+        position:absolute;
+        left:10vw;
+        top:10vh;
+    }
+    
+    .form input{
+        width:40vw;
+        height:4vw;
+        font-size:2vw;
+        font-family: 'Farro', sans-serif;
+    }
+    
+    .btnLogin{
+        width:30vw;
+        height:6vw;
+        background-color: #E50914;
+        border-radius: 2vw;
+        border:none;
+        color:white;  
+        font-family: 'Farro', sans-serif;
+        cursor:pointer;
+        margin-bottom:1vw;
+        font-size:3vw;
+    }
+    .btnLogin:hover{
+        background-color: #ad0b13;
+    }
+    
+    .register{
+        display:Flex;
+        width:80%;
+        justify-content: space-around;
+        font-size:3vw;
+        cursor:pointer;
+    }
+    
+    .register:hover{
+        color: #E50914;
+    }
+    
+    .flexBlock{
+        width:80%; 
+        display:Flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin-left:auto;
+        margin-right:auto;
+        font-family: 'Farro', sans-serif;
+        height:20vw;
+    }
+    .flexBlock:nth-child(2){
+        margin-left:8vw;
+    }
+    
+    
+}

@@ -8,6 +8,7 @@ import logo from "../../images/balkanflix.png"
 import icon from "../../images/usericon.png"
 import searchIcon from "../../images/search.png"
 import CategoriesDropDown from "./CategoriesDropDown"
+import mobileMenu from "../../images/menu.png"
 
 
 
@@ -24,14 +25,24 @@ const HeaderHomePage = () =>{
     const history=useHistory();
     const [navigation,setNavigation] = navigation1
     const [movieCategory,setMovieCategory] = value10;
+    const [isMobile,setIsMobile] = useState()
     
     const searchInputRef=useRef();
+    const searchInputRefMobile = useRef()
     
     function submitSearchHandler(e){
         e.preventDefault();
-        const enteredSearch=searchInputRef.current.value;
+        const enteredSearch= searchInputRef.current.value;
+        const enteredSearchMobile = searchInputRefMobile.current.value;
+        console.log(typeof(enteredSearch));
+        console.log(enteredSearchMobile)
         if(navigation===0 || navigation===2){
-            setSearchValue(enteredSearch);
+            if(enteredSearch!=="" && enteredSearchMobile===""){
+                setSearchValue(enteredSearch);
+                
+            }else{
+                setSearchValue(enteredSearchMobile)
+            }
         }
         if(navigation===1){
             setSearchValueSeries(enteredSearch);
@@ -70,25 +81,50 @@ const HeaderHomePage = () =>{
         history.replace("/profile")
     }
     
+    
     return(
-        <div className={classes.headerBar}>
-            <img className={classes.logo} src={logo} alt="" />
-            <li className={classes.headerList} onClick={fetchNewest}>Movies</li>
-            <li onClick={tvShows}className={classes.headerList}>TV Shows</li>
-            <div onMouseLeave={removeCategories} className={classes.categories}>
-                <li onClick={showCategories}  className={classes.headerList}>Categories</li>
-                {categories ? <CategoriesDropDown/> : null}
+        <div>
+            <div className={classes.headerBar}>
+                <img className={classes.logo} src={logo} alt="" />
+                <li className={classes.headerList} onClick={fetchNewest}>Movies</li>
+                <li onClick={tvShows}className={classes.headerList}>TV Shows</li>
+                <div onMouseLeave={removeCategories} className={classes.categories}>
+                    <li onClick={showCategories}  className={classes.headerList}>Categories</li>
+                    {categories ? <CategoriesDropDown/> : null}
+                </div>
+                <li onClick={showFavorites}className={classes.headerList}>My Favorites</li>
+                <div className={classes.searchDiv}>
+                    <form className={classes.headerList} onSubmit={submitSearchHandler} action="">
+                        <input type="search" ref={searchInputRef}/>
+                    </form>
+                    <img onClick={submitSearchHandler}className={classes.searchIcon}src={searchIcon} alt="" />
+                </div>
+                
+                <img onClick={profilePage} className={classes.userIcon} src={account.accountAvatar===null || account.accountAvatar==="" ? icon : account.accountAvatar} alt="" />
             </div>
-            <li onClick={showFavorites}className={classes.headerList}>My Favorites</li>
-            <div className={classes.searchDiv}>
+            <div className={classes.headerBarMobileTop}>
+                <img className={classes.logo} src={logo} alt="" />
                 <form className={classes.headerList} onSubmit={submitSearchHandler} action="">
-                    <input type="search" ref={searchInputRef}/>
+                        <input type="search" ref={searchInputRefMobile}/>
+                        <img onClick={submitSearchHandler}className={classes.searchIcon}src={searchIcon} alt="" />
                 </form>
-                <img onClick={submitSearchHandler}className={classes.searchIcon}src={searchIcon} alt="" />
+                <img  className={classes.mobileMenuIcon} src={mobileMenu} alt="" />
+                
             </div>
-            
-            <img onClick={profilePage} className={classes.userIcon} src={account.accountAvatar===null || account.accountAvatar==="" ? icon : account.accountAvatar} alt="" />
+            <div className={classes.headerBarMobile}>
+                <img className={classes.logo} src={logo} alt="" />
+                <li className={classes.headerList} onClick={fetchNewest}>Movies</li>
+                <li onClick={tvShows}className={classes.headerList}>TV Shows</li>
+                <div onMouseLeave={removeCategories} className={classes.categories}>
+                    <li onClick={showCategories}  className={classes.headerList}>Categories</li>
+                    {categories ? <CategoriesDropDown/> : null}
+                </div>
+                <li onClick={showFavorites}className={classes.headerList}>My Favorites</li>    
+                <img onClick={profilePage} className={classes.userIcon} src={account.accountAvatar===null || account.accountAvatar==="" ? icon : account.accountAvatar} alt="" />
+            </div>
         </div>
+        
+        
     )
 } 
 
