@@ -29,9 +29,6 @@
     
 }
 
-
-
-
 .list:nth-child(1){
     margin-top:2vw;
 }
@@ -41,3 +38,33 @@
     100%{transform:translate(0,0%)}
 }
 
+.headerBarMobileCategories{
+    display:flex;
+    flex-direction: column;
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:10;
+    background-color: black;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    transform:translate(100vw);
+    transition:1s;
+}
+.headerBarMobileCategories .list{
+    font-size:3vw;
+}
+
+.headerBarMobileCategories h2 {
+    font-size:5vw;
+    color:White;
+}
+
+@media only screen and (max-width:500px){
+    .headerBarMobileCategories .list{
+        font-size:4vw;
+    }
+}

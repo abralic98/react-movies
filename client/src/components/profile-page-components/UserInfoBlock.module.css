@@ -97,3 +97,81 @@
     font-family: 'Farro', sans-serif;
     color:white;
 }
+
+@media only screen and (max-width:1000px){
+    .infoBlock{
+        width:40vw;
+        height:auto;
+        min-height: 91vh;  
+    }
+    .infoBlock h2{
+        font-size:3vw;
+    }
+    .infoBlock .labels{
+        width:35vw;
+    }
+    .infoBlock button{
+        width:20vw;
+        height:5vw;
+    }
+    .infoBlock .avatarBlock{
+        width:20vw;
+        height:20vw;
+    }
+    .infoBlock .avatar{
+        width:20vw;
+        height:20vw;
+    }
+    .infoBlock .avatar img{
+        width:30vw;
+        height:20vw;
+    }
+    .infoBlock .buttons button:nth-child(2){
+        display:none
+    }
+}
+@media only screen and (max-width:900px){
+    .infoBlock{
+        width:100vw;
+        height:auto;
+        min-height: 91vh;  
+    }
+    .infoBlock h2{
+        font-size:4vw;
+    }
+    .infoBlock .labels{
+        width:70vw;
+    }
+    .infoBlock button{
+        width:20vw;
+        height:5vw;
+    }
+    .infoBlock .avatarBlock{
+        width:30vw;
+        height:30vw;
+    }
+    .infoBlock .avatar{
+        width:30vw;
+        height:30vw;
+    }
+    .infoBlock .avatar img{
+        width:40vw;
+        height:30vw;
+    }
+    .infoBlock .buttons{
+        display:flex;
+        width:80vw;
+        justify-content: space-around;
+    }
+    .infoBlock .buttons button:nth-child(2){
+        display:block
+    }
+}
+
+@media only screen and (max-width:700px){
+    .infoBlock .buttons button{
+        width:30vw;
+        height:8vw;
+        font-size:3vw;
+    }
+}

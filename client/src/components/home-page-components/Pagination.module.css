@@ -40,3 +40,70 @@
     color:white;
 }
 
+@media only screen and (max-width:1000px){
+    .buttonBlock{
+        width:50vw;
+        font-size:2vw;
+    }
+    .button{
+        width:15vw;
+        height:5vw;
+        font-size:1.5vw;
+    }
+    .counterBlock{
+        width:5vw;
+        border-radius: 1vw ;
+        height:5vw;  
+    }
+}
+
+@media only screen and (max-width:900px){
+    .button{
+        width:15vw;
+        height:5vw;
+        font-size:1.7vw;
+    }  
+}
+@media only screen and (max-width:700px){
+    .buttonBlock{
+        margin-top:5vw;
+        width:70vw;
+        font-size:3vw;
+    }
+    .button{
+        width:25vw;
+        height:8vw;
+        font-size:2vw;
+    }
+    .counterBlock{
+        width:8vw;
+        border-radius: 1vw ;
+        height:8vw;  
+    }
+}
+
+@media only screen and (max-width:500px){
+    .button{
+        font-size:3vw;
+    }
+    
+}
+
+@media only screen and (max-width:400px){
+    .buttonBlock{
+        margin-top:5vw;
+        width: 90vw;
+        font-size:3vw;
+        padding-bottom:5vw;
+    }
+    .button{
+        width:30vw;
+        height:10vw;
+        font-size:3.5vw;
+    }
+    .counterBlock{
+        width:8vw;
+        border-radius: 1vw;
+        height:8vw;  
+    }
+}

@@ -10,12 +10,7 @@ const MovieItemList = (props) =>{
     const {navigation1, accountFavoriteList1} = useContext(LoginContext)
     const [navigation,setNavigation] = navigation1
     const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1
-    if(navigation!==3){
-        movies.splice(18,2)
-    }
-    if(navigation===3){
-        console.log(accountFavoriteList, "MOVIE ITEM LIST")
-    }
+    
     
     return(  
         <div className={classes.list}>

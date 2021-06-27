@@ -151,9 +151,9 @@ const MovieInfo = () =>{
                 <img onClick={rightArrow} className={classes.arrow} src={slidearrow} alt="" />
             </div>
             <div className={classes.trailerFlexBox}>
-                {/*<div className={classes.yt}>
+                {<div className={classes.yt}>
                     <iframe width="700" height="400" src={`https://www.youtube.com/embed/${trailer}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                </div>*/}
+                </div>}
                 <div onClick={addFavoriteHandler}className={classes.btnFavorites}>Add to Favorites</div>
             </div>
             

@@ -20,22 +20,22 @@ const HeaderHomePage = () =>{
     const [searchValueSeries,setSearchValueSeries] = value9;
     const [categories,setCategories] =value8;
 
-    const {accountContext,navigation1,value10} = useContext(LoginContext);
+    const {accountContext,navigation1,value10,mobile} = useContext(LoginContext);
     const [account,setAccount] = accountContext
     const history=useHistory();
     const [navigation,setNavigation] = navigation1
     const [movieCategory,setMovieCategory] = value10;
-    const [isMobile,setIsMobile] = useState()
-    
+    const [isMobile,setIsmobile] = mobile;
+
     const searchInputRef=useRef();
     const searchInputRefMobile = useRef()
+    const rightBarRef = useRef()
     
     function submitSearchHandler(e){
         e.preventDefault();
         const enteredSearch= searchInputRef.current.value;
         const enteredSearchMobile = searchInputRefMobile.current.value;
-        console.log(typeof(enteredSearch));
-        console.log(enteredSearchMobile)
+
         if(navigation===0 || navigation===2){
             if(enteredSearch!=="" && enteredSearchMobile===""){
                 setSearchValue(enteredSearch);
@@ -45,7 +45,13 @@ const HeaderHomePage = () =>{
             }
         }
         if(navigation===1){
-            setSearchValueSeries(enteredSearch);
+            if(enteredSearch!=="" && enteredSearchMobile===""){
+                setSearchValueSeries(enteredSearch);
+                console.log(searchValueSeries , "!")
+            }else{
+                setSearchValueSeries(enteredSearchMobile)
+                console.log(searchValueSeries,"KE")
+            }
         }
         
     }
@@ -66,6 +72,7 @@ const HeaderHomePage = () =>{
 
     function showCategories(){
         setCategories(true);
+        setIsmobile(false)
     }
     function removeCategories(){
         setCategories(false)
@@ -81,11 +88,21 @@ const HeaderHomePage = () =>{
         history.replace("/profile")
     }
     
-    
+    function openRightNav(){
+        const rightNav = rightBarRef;
+        rightNav.current.style.transform="translate(0vw)"
+    }
+
+    function showCategoriesMobile(){
+        setCategories(true);
+        setIsmobile(true)
+        const rightNav = rightBarRef;
+        rightNav.current.style.transform="translate(-100vw)"
+    }
     return(
         <div>
             <div className={classes.headerBar}>
-                <img className={classes.logo} src={logo} alt="" />
+                <img onClick={fetchNewest} className={classes.logo} src={logo} alt="" />
                 <li className={classes.headerList} onClick={fetchNewest}>Movies</li>
                 <li onClick={tvShows}className={classes.headerList}>TV Shows</li>
                 <div onMouseLeave={removeCategories} className={classes.categories}>
@@ -103,20 +120,20 @@ const HeaderHomePage = () =>{
                 <img onClick={profilePage} className={classes.userIcon} src={account.accountAvatar===null || account.accountAvatar==="" ? icon : account.accountAvatar} alt="" />
             </div>
             <div className={classes.headerBarMobileTop}>
-                <img className={classes.logo} src={logo} alt="" />
+                <img onClick={fetchNewest} className={classes.logo} src={logo} alt="" />
                 <form className={classes.headerList} onSubmit={submitSearchHandler} action="">
                         <input type="search" ref={searchInputRefMobile}/>
                         <img onClick={submitSearchHandler}className={classes.searchIcon}src={searchIcon} alt="" />
                 </form>
-                <img  className={classes.mobileMenuIcon} src={mobileMenu} alt="" />
+                <img onClick={openRightNav} className={classes.mobileMenuIcon} src={mobileMenu} alt="" />
                 
             </div>
-            <div className={classes.headerBarMobile}>
-                <img className={classes.logo} src={logo} alt="" />
+            <div ref={rightBarRef} className={classes.headerBarMobile}>
+                <img onClick={fetchNewest} className={classes.logo} src={logo} alt="" />
                 <li className={classes.headerList} onClick={fetchNewest}>Movies</li>
                 <li onClick={tvShows}className={classes.headerList}>TV Shows</li>
-                <div onMouseLeave={removeCategories} className={classes.categories}>
-                    <li onClick={showCategories}  className={classes.headerList}>Categories</li>
+                <div className={classes.categories}>
+                    <li onClick={showCategoriesMobile}  className={classes.headerList}>Categories</li>
                     {categories ? <CategoriesDropDown/> : null}
                 </div>
                 <li onClick={showFavorites}className={classes.headerList}>My Favorites</li>    

@@ -127,10 +127,85 @@
     }
 
     .overview{
-        font-size:1.3vw;
-        
+        display:none;  
     }
     .title_rating{
         height:8vw;
     }
+}
+
+@media only screen and (max-width:700px){
+    .movieBlock{
+        width:45vw;
+        height:70vw;
+        background-color: black;
+        margin-bottom:1vw;
+        position: relative;
+        overflow:hidden;
+        cursor: pointer;
+    }
+    .movieBlock img{
+        width:45vw;
+        height:60vw;
+    }
+
+    .title{
+        color:white;
+        font-family: 'Farro', sans-serif; 
+        font-size:2vw; 
+        width:30vw;
+    }
+
+    .title_rating{
+        height:8vw;
+    }
+}
+
+@media only screen and (max-width:500px){
+    .movieBlock{
+        width:48vw;
+        height:70vw;
+        background-color: black;
+        margin-bottom:1vw;
+        position: relative;
+        overflow:hidden;
+        cursor: pointer;
+        margin-bottom:2vw;
+    }
+    .movieBlock img{
+        width:48vw;
+        height:60vw;
+    }
+
+    .title{
+        font-size:2.4vw; 
+        width:35vw;
+    }
+
+}
+
+@media only screen and (max-width:400px){
+    .movieBlock{
+        width:90vw;
+        height:130vw;
+        background-color: black;
+        margin-bottom:1vw;
+        position: relative;
+        overflow:hidden;
+        cursor: pointer;
+        margin-bottom:5vw;
+    }
+    .movieBlock img{
+        width:90vw;
+        height:110vw;
+    }
+
+    .title{
+        font-size:4vw; 
+        width:50vw;
+    }
+    .title_rating{
+        height:20vw;
+    }
+
 }

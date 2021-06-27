@@ -82,6 +82,11 @@
         font-size:3vw;
     }
 
+    .headerBarMobile img {
+        width:20vw;
+        height:20vw;
+    }
+
     .headerBarMobileTop{
         display:flex;
         background-color: black;
@@ -109,4 +114,42 @@
     .headerBarMobileTop form .searchIcon{
         width:8vw;
     }
+
+}
+
+@media only screen and (max-width:500px){
+    .headerBarMobile .headerList{
+        font-size:5vw;
+    }
+
+    .headerBarMobileTop{
+        display:flex;
+        background-color: black;
+        align-items: center;
+        justify-content: space-around;
+        width:100vw;
+        height:20vw;
+    }
+    .headerBarMobileTop .logo{
+        width:18vw;
+        height:18vw;
+    }
+    .headerBarMobileTop .mobileMenuIcon{
+        width:13vw;
+        height:13vw;
+    }
+    .headerBarMobileTop form input{
+        width:30vw;
+        height:6vw;
+    }
+    .headerBarMobileTop form {
+        display:flex;
+        width:40vw;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .headerBarMobileTop form .searchIcon{
+        width:10vw;
+    }
+
 }

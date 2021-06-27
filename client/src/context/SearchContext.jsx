@@ -32,9 +32,8 @@ export const MovieProvider = (props) =>{
 
 
     useEffect(() =>{
-        if(navigation===1)
+        if(navigation===1 && searchValueSeries===undefined)
         fetch(FEATURED_TV_SHOWS_API+"&page="+tvShowPage).then(res => res.json()).then(data =>{       
-            
             console.log("najnovije serije")
             console.log(navigation);
             setMovies(data.results)
@@ -91,15 +90,15 @@ export const MovieProvider = (props) =>{
     },[movieCategory,moviePage])
 
     useEffect(() =>{
-        if(navigation===1 && searchValueSeries!==""){
+        if(navigation===1 && searchValueSeries!==undefined){
+            console.log(searchValueSeries,"HD")
             fetch(SEARCH_TV_SHOWS+searchValueSeries).then(res => res.json()).then(data =>{      
                 console.log("serije search")
                 setMovies(data.results);       
             });
         }
-        
-
     },[searchValueSeries])
+
     useEffect(() =>{
         if(navigation===3){ // popravit treba ne radi
             Axios.get("http://localhost:3001/api/get/account/favorites")
