@@ -4,14 +4,58 @@ import logo from "../images/balkanflix.png"
 import tmdb from "../images/tmdb.svg"
 import pitch from "../video/pitch.mp4"
 import mail from "../images/email-icon.png"
-
-
+import {useRef} from "react"
 import { useHistory } from "react-router-dom"
 const HomePage = ()=>{
+    
     const history = useHistory()
     function getStarted(){
         history.replace("/register")
     }
+
+    const nameInputRef = useRef()
+    const mailInputRef = useRef()
+    const subjectInputRef = useRef()
+    const messageInputRef = useRef()
+    
+function sendMailCustomer(e){
+    e.preventDefault()
+    const name = nameInputRef.current.value;
+    const email = mailInputRef.current.value;
+    sendMailToMe();
+    window.Email.send({
+        Host : "smtp.gmail.com",
+        Username : "balkanflix98@gmail.com",
+        Password : "balkanflix123",
+        To : email,
+        From : "balkanflix98@gmail.com",
+        Subject : "no-reply",
+        Body : `Thank you for contacting me ${name}. I recieved your message and I will respond as soon as possible`
+    })
+    .then(
+        nameInputRef.current.value="",
+        mailInputRef.current.value="",
+        subjectInputRef.current.value="",
+        messageInputRef.current.value=""
+    )
+    
+}
+function sendMailToMe(){
+    const name = nameInputRef.current.value;
+    const email = mailInputRef.current.value;
+    const subject = subjectInputRef.current.value;
+    const message = messageInputRef.current.value
+
+    window.Email.send({
+        Host : "smtp.gmail.com",
+        Username : "balkanflix98@gmail.com",
+        Password : "balkanflix123",
+        To : "ante.bralic2@gmail.com",
+        From : "balkanflix98@gmail.com",
+        Subject : "You have new message from ",
+        Body : `Some ${name} wants to contact you from ${email} and his subject is ${subject} and message ${message}`
+    })
+}
     return (
         <div>
             <div className={classes.background}>
@@ -51,24 +95,24 @@ const HomePage = ()=>{
                 <div className={classes.contact}>
                     <h2>Contact</h2>
                     <p>Fell free to contact me if you have any ideas.</p>
-                    <form action="">
+                    <form onSubmit={sendMailCustomer} action="" >
                         <div className={classes.contactForm}>
                             <label htmlFor="">Your Name</label>
-                            <input type="text" />
+                            <input ref={nameInputRef} type="text" />
                         </div>
                         <div className={classes.contactForm}>
                             <label htmlFor="">Your Email</label>
-                            <input type="email" />
+                            <input ref={mailInputRef} type="email" />
                         </div>
                         <div className={classes.contactForm}>
                             <label htmlFor="">Subject</label>
-                            <input type="text" />
+                            <input ref={subjectInputRef}type="text" />
                         </div>
                         <div className={classes.contactForm}>
                             <label htmlFor="">Your Message</label>
-                            <textarea name="message"  cols="34" rows="10"></textarea>
+                            <textarea ref={messageInputRef} name="message"  cols="34" rows="10"></textarea>
                         </div>
-                        <button>Send Message<img src={mail} alt="" /></button>
+                        <button onClick={sendMailCustomer}>Send Message<img src={mail} alt="" /></button>
                     </form>
                 </div>
                 <div className={classes.greyLine}></div>

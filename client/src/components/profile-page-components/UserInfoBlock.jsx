@@ -36,13 +36,11 @@ const UserInfoBlock = () =>{
         const [size,setSize] = useState([window.innerWidth,window.innerHeight])
         return size;
     }
-    
+    const [width,height] = WindowSize();
 
-    const [height,width] = WindowSize();
-    console.log(height);
     return (
         <div>
-            {height>=900?
+            {width>=900?
             <div className={classes.infoBlock}>
                 <h2>Welcome {loginName}</h2>
                 <div className={classes.avatarBlock}>
@@ -61,7 +59,7 @@ const UserInfoBlock = () =>{
         
             </div> : null}
 
-            {height<900 && editProfile===false?
+            {width<900 && editProfile===false?
             <div className={classes.infoBlock}>
                 <h2>Welcome {loginName}</h2>
                 <div className={classes.avatarBlock}>

@@ -26,7 +26,14 @@ app.post("/api/register", (req,res)=>{
 
     })
 })
-
+app.put("/api/activate", (req,res)=>{
+    const activation = req.body.accountActivation
+    const accountLoginName = req.body.accountLoginName;
+    const sqlUpdate = "UPDATE account_details SET accountActivation ? WHERE accountLoginName = ?"
+    db.query(sqlUpdate, [activation,accountLoginName] , (err,result)=>{
+        console.log(err)
+    })
+})
 app.put("/api/edit/account", (req,res)=>{
     //const updateName = req.body.updateName;
     const updatePassword = req.body.updatePassword;
@@ -48,6 +55,13 @@ app.put("/api/edit/account/favorites",(req,res)=>{
     const sqlUpdate = "UPDATE account_details SET accountFavorites = ? WHERE accountLoginName = ?"
     db.query(sqlUpdate, [updateFavorites, accountLoginName],(err,res) =>{
         console.log(err)
+    })
+})
+
+app.get("/api/get/account/favorites",(req,res)=>{
+    const sqlUpdate = "SELECT * FROM account_details"
+    db.query(sqlUpdate ,(err,result) =>{
+        res.send(result)
     })
 })
 

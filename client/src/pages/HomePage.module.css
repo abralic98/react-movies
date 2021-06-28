@@ -406,12 +406,54 @@
     }
   }
   @media only screen and (max-width: 500px){
+    .content .titleBlock h1{
+        font-size:5vw;
+    }
+    .content .titleBlock p{
+        font-size:4vw;
+    }
+    .content .titleBlock button{
+        width:30vw;
+        height:8vw;
+        font-size:3vw;
+    }
+    .content .tmdb h2{
+        font-size:5vw;
+    }
+    .content .tmdb p{
+        font-size:3vw;
+    }
+    .content .watch h2{
+        font-size:4vw;
+    }
+    .content .watch p{
+        font-size:3vw;
+    }
     .content .watch .videoPlayer video{
         margin-top:-18vw;
+    }
+    .content .contact h2{
+        font-size:5vw;
+    }
+    .content .contact p{
+        font-size:4vw;
+    }
+    .content .contact form button{
+        width:50vw;
+        height:10vw;
+        font-size:4vw;
+    }
+    .content .contact form button img{
+        display:none;
     }
   }
   @media only screen and (max-width: 400px){
     .content .watch .videoPlayer video{
         margin-top:-23vw;
+    }
+  }
+  @media only screen and (max-width: 350px){
+    .content .watch .videoPlayer video{
+        margin-top:-29vw;
     }
   }

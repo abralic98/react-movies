@@ -53,11 +53,10 @@ const EditProfileForm = () =>{
     }
     
 
-    const [height,width] = WindowSize();
-    console.log(height);
+    const [width,height] = WindowSize();
     return (
         <div>
-            {height>=900 ?
+            {width>=900 ?
             <div className={classes.body}>
                 <form onSubmit={submitChanges}action="" className={classes.form}>
                     <div className={classes.labelInputBlock}>
@@ -92,7 +91,7 @@ const EditProfileForm = () =>{
             </div> : null}
 
 
-            {height<900 && editProfile===true?
+            {width<900 && editProfile===true?
             <div className={classes.body}>
                 <form onSubmit={submitChanges}action="" className={classes.form}>
                     <div className={classes.labelInputBlock}>

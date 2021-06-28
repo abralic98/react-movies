@@ -43,12 +43,12 @@ const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,i
     }
  
     return(
-        <div onClick={navigation===0 || navigation===2 || navigation===3 ? selectMovie : selectTvShow}className={classes.movieBlock}>
+        <div onClick={navigation===0 || navigation===2 || navigation===3 ? (title===undefined ? selectTvShow : selectMovie) : selectTvShow}className={classes.movieBlock}>
             <div>
                 <img src={IMAGES_API+poster_path} alt={title} />
             </div>
             <div className={classes.title_rating}>
-                <p className={classes.title}>{navigation===0 || navigation===2 || navigation===3 ? title : name }</p>
+                <p className={classes.title}>{navigation===0 || navigation===2 || navigation===3 ? (title===undefined ? name : title) : name }</p>
                 <p className={classes.rating}>{vote_average}{<span>&#9733;</span>}</p>
             </div>
             <div className={classes.overview}>
