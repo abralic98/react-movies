@@ -22,7 +22,7 @@ const RegisterForm = (props) =>{
         props.onRegister(registrationData)
     }
     return(
-        <div>
+        <div className={classes.registerFlexBox}>
             <form onSubmit={submitRegistration} className={classes.form} action="">
                 <div className={`${classes.flexBlock} ${classes.flexBoxMargin}`}>
                     <label className={classes.label} htmlFor="username" >User Name</label>

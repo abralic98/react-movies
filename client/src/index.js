@@ -7,16 +7,15 @@ import { SelectedMovieProvider } from "./context/MovieContext"
 import { LoginProvider } from "./context/LoginContext"
 
 
+
 ReactDOM.render(
-  <React.StrictMode>
     <BrowserRouter>
       <SelectedMovieProvider>
         <LoginProvider>
-          <App/> 
+            <App/> 
         </LoginProvider>
       </SelectedMovieProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
   document.getElementById('root')
 );
 

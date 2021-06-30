@@ -14,6 +14,7 @@ const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,i
     const [navigation,setNavigation] = navigation1
     
     function selectMovie(){
+        
         setSelectedMovie((prev)=> {
             return {
                 title:prev.title=title,
@@ -25,9 +26,11 @@ const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,i
                 id:prev.id=id
             }
         })
+        console.log(selectedMovie.title)
         history.replace("/movies/movie")
     }
     function selectTvShow(){
+        console.log(selectedTvShow)
         setSelectedTvShow((prev)=> {
             return {
                 title:prev.title=title,

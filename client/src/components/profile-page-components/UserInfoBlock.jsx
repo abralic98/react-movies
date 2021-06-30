@@ -8,12 +8,14 @@ import question from "../../images/question.jpg"
 
 const UserInfoBlock = () =>{
     const history = useHistory();
-    const { accountContext ,value1, editingProfile} = useContext(LoginContext);
+    const { accountContext ,value1, editingProfile, navigation1} = useContext(LoginContext);
     const [account,setAccount] = accountContext;
     const [loginName,setLoginName] = value1;
     const [editProfile,setEditProfile] = editingProfile;
+    const [navigation,setNavigation] = navigation1
 
     function redirectToLogin(){
+        setNavigation(0)
         history.replace("/login")
     }
     

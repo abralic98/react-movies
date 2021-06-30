@@ -61,11 +61,20 @@ input{
 .flexBlock:nth-child(3){
     margin-left:4.1vw;
 }
+.registerFlexBox{
+    width:100vw;
+    min-height:100vh;
+    z-index:11;
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media only screen and (max-width: 1000px){
     .form{   
         width:80vw;
-        height:80vh;
+        height:70vh;
         font-family: 'Farro', sans-serif;
         display:Flex;
         flex-direction: column;
@@ -75,9 +84,7 @@ input{
         font-family: 'Farro', sans-serif;
         background-color: black;
         border-radius: 2vw;
-        position:absolute;
-        top:-5vh;
-        left:-20vw;
+        position:relative;
     }
     
     .form input{

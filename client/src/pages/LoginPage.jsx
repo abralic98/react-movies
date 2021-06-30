@@ -8,13 +8,12 @@ import { LoginContext } from "../context/LoginContext"
 
 
 const LoginPage = () =>{
-
-    const [login,setLogin] = useState(false);
     const history = useHistory();
     const {value1,accountContext,accountFavoriteList1} = useContext(LoginContext);
     const [loginName,setLoginName] = value1;
     const [account,setAccount] = accountContext;
     const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1;
+    const [invalidInformation,setInvalidInformation] = useState({invalidInformation1:false,value:""})
     function LoginHandler(loginData){
         
 
@@ -23,17 +22,26 @@ const LoginPage = () =>{
             const findAccount = response.data.find((item)=>{
                 return (item.accountLoginName===loginData.name && item.accountPassword===loginData.password)
             })
-
+            if(findAccount===undefined){
+                setInvalidInformation((prev)=>{
+                    return {
+                        invalidInformation1:prev.invalidInformation1=true,
+                        value:"Invalid username or password"
+                    }
+                })
+            }
             if(findAccount!==undefined){
                 setLoginName(loginData.name)
                 setAccount(findAccount)
-                setAccountFavoriteList(JSON.parse(findAccount.accountFavorites))
-                setLogin(true)
+                if(findAccount.accountFavorites!==null){
+                    setAccountFavoriteList(JSON.parse(findAccount.accountFavorites))
+                }
+                if(findAccount.accountFavorites===null){
+                    setAccountFavoriteList([])
+                }   
+                history.replace("/movies")
             }
         })
-        if(login===true){
-            history.replace("/movies")
-        }
         
     }
     
@@ -43,6 +51,7 @@ const LoginPage = () =>{
             <div className={classes.background}>
                 <img src={backgroundIMG} alt="background-img" className={classes.backgroundIMG}/>
             </div>
+            {invalidInformation.invalidInformation1===true ? <p className={classes.invalidInformation}>{invalidInformation.value}</p> : null}    
             <div className={classes.blackBar}>
                 <LoginForm onLoginHandler={LoginHandler}/>
             </div>  

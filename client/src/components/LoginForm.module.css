@@ -55,6 +55,15 @@ input{
     font-family: 'Farro', sans-serif;
     
 }
+.loginFlexBox{
+    width:100vw;
+    min-height:100vh;
+    z-index:11;
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .flexBlock:nth-child(1){
     margin-top:2vw;
@@ -130,6 +139,7 @@ input{
     .flexBlock:nth-child(2){
         margin-left:8vw;
     }  
+    
 }
 
 @media only screen and (max-width: 600px){
@@ -167,4 +177,5 @@ input{
     .register:hover{
         color: #E50914;
     } 
+   
 }

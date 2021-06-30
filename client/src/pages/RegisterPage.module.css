@@ -11,11 +11,17 @@
 }
 
 .blackBar{
-    position:fixed;
-    top:17vw;
     z-index: 10;
-    left:30vw;
 }
+.duplicate{
+    font-size:2vw;
+    color:white;
+    position:absolute;
+    width:100vw;
+    margin-top:10vw;
+    z-index:5
+}
+
 
 .blackGradient{
     position:fixed;
@@ -26,3 +32,4 @@
     background: rgb(0,0,0);
     background: linear-gradient(180deg, rgba(0,0,0,0.9444152661064426) 27%, rgba(0,0,0,0.8099614845938375) 54%, rgba(0,0,0,0.7399334733893557) 81%, rgba(0,0,0,0.5186449579831933) 100%);
 }
+

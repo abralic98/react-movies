@@ -19,7 +19,7 @@ const LoginForm = (props) =>{
         props.onLoginHandler(loginData);
     }
     return(
-        <div>
+        <div className={classes.loginFlexBox}>
             <form className={classes.form} action="" onSubmit={submitLogin} >
                 <div className={`${classes.flexBlock} ${classes.flexBoxMargin}`}>
                     <label className={classes.label} htmlFor="username">User Name</label>
@@ -36,7 +36,7 @@ const LoginForm = (props) =>{
                     </div>
                 </div>
                 <div className={classes.flexBlock}>
-                    <button className={classes.btnLogin}>Login</button>
+                    <button onClick={submitLogin} className={classes.btnLogin}>Login</button>
                 </div>           
             </form>
         </div>

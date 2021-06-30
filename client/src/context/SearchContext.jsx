@@ -108,6 +108,7 @@ export const MovieProvider = (props) =>{
                         return (item.accountLoginName===account.accountLoginName)
                     })
                     if(findAccount.accountFavorites!==undefined || findAccount.accountFavorites!==null){
+                        console.log(JSON.parse(findAccount.accountFavorites))
                         setMovies(JSON.parse(findAccount.accountFavorites))
                     }
                     

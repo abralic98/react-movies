@@ -18,7 +18,6 @@ export const LoginProvider = (props)=>{
         accountFavorites:""
     })
     const [editProfile,setEditProfile] = useState(false);
-    console.log("EXPORT ",accountFavoriteList)
     return (
         <LoginContext.Provider value = {{
             value1:[loginName,setLoginName],
