@@ -1,6 +1,6 @@
 
-import classes from "./AboutThisApp.module.css"
-import tmdb from "../../images/tmdb.svg"
+import classes from "./AboutThisApp.module.css";
+import tmdb from "../../images/tmdb.svg";
 
 
 const AboutThisApp = () =>{

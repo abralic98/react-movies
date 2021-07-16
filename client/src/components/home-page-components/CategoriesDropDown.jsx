@@ -1,54 +1,54 @@
-import classes from "./CategoriesDropDown.module.css"
-import { Link } from "react-router-dom"
-import { SearchContext } from "../../context/SearchContext"
-import { useContext, useRef } from "react"
-import { LoginContext } from "../../context/LoginContext"
-import logo from "../../images/balkanflix.png"
+import classes from "./CategoriesDropDown.module.css";
+import { Link } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
+import { useContext, useRef } from "react";
+import { LoginContext } from "../../context/LoginContext";
+import logo from "../../images/balkanflix.png";
 const CategoriesDropDown = () =>{
-    const {value4, value8}= useContext(SearchContext)
-    const {navigation1,value10,mobile} = useContext(LoginContext)
-    const [navigation,setNavigation] = navigation1
+    const {value4, value8}= useContext(SearchContext);
+    const {navigation1,value10,mobile} = useContext(LoginContext);
+    const [navigation,setNavigation] = navigation1;
     const [movieCategory,setMovieCategory] = value10;
     const [moviesPage,setMoviesPage] = value4;
     const [isMobile,setIsmobile] = mobile;
-    const [categories,setCategories] = value8
+    const [categories,setCategories] = value8;
     
     const rightBarCategoriesRef = useRef();
     function Horror(){
-        setNavigation(2)
+        setNavigation(2);
         setMoviesPage(1);
         setMovieCategory(2);
-        setCategories(false)
+        setCategories(false);
     }
     function Action(){
-        setNavigation(2)
+        setNavigation(2);
         setMoviesPage(1);
         setMovieCategory(1);
-        setCategories(false)
+        setCategories(false);
     }
     function SciFi(){
-        setNavigation(2)
+        setNavigation(2);
         setMoviesPage(1);
         setMovieCategory(3);
-        setCategories(false)
+        setCategories(false);
     }
     function Mystery(){
-        setNavigation(2)
+        setNavigation(2);
         setMoviesPage(1);
-        setMovieCategory(4)
-        setCategories(false)
+        setMovieCategory(4);
+        setCategories(false);
     }
     function Comedy(){
-        setNavigation(2)
+        setNavigation(2);
         setMoviesPage(1);
         setMovieCategory(5);
-        setCategories(false)
+        setCategories(false);
     }
     function Romance(){
-        setNavigation(2)
+        setNavigation(2);
         setMoviesPage(1);
         setMovieCategory(6);
-        setCategories(false)
+        setCategories(false);
     }
     console.log(isMobile)
     return(
@@ -77,4 +77,4 @@ const CategoriesDropDown = () =>{
     )
 }
 
-export default CategoriesDropDown
+export default CategoriesDropDown;

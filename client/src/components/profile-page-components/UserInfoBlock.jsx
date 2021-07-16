@@ -1,9 +1,9 @@
-import classes from "./UserInfoBlock.module.css"
-import { useHistory } from "react-router-dom"
+import classes from "./UserInfoBlock.module.css";
+import { useHistory } from "react-router-dom";
 import { useContext, useState } from "react";
 import { LoginContext } from "../../context/LoginContext"; 
-//import Axios from "axios"
-import question from "../../images/question.jpg"
+
+import question from "../../images/question.jpg";
 
 
 const UserInfoBlock = () =>{
@@ -12,30 +12,17 @@ const UserInfoBlock = () =>{
     const [account,setAccount] = accountContext;
     const [loginName,setLoginName] = value1;
     const [editProfile,setEditProfile] = editingProfile;
-    const [navigation,setNavigation] = navigation1
+    const [navigation,setNavigation] = navigation1;
 
     function redirectToLogin(){
-        setNavigation(0)
-        history.replace("/login")
+        setNavigation(0);
+        history.replace("/login");
     }
-    
-    /*Axios.get("http://localhost:3001/api/accounts")
-    .then((response)=>{
-        setAccount({
-            accountName:response.data.accountLoginName,
-            accountPassword:"",
-            accountEmail:"",
-            accountFullName:"",
-            accountAge:"",
-            accountAvatar:""
-        })
-    })*/
-    
-   function edit(){
+    function edit(){
        setEditProfile(true);
-   }
-   function WindowSize(){
-        const [size,setSize] = useState([window.innerWidth,window.innerHeight])
+    }
+    function WindowSize(){
+        const [size,setSize] = useState([window.innerWidth,window.innerHeight]);
         return size;
     }
     const [width,height] = WindowSize();

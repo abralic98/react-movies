@@ -1,14 +1,14 @@
-import classes from "../home-page-components/HeaderHomePage.module.css"
+import classes from "../home-page-components/HeaderHomePage.module.css";
 import { useState , useRef ,useContext} from "react";
-import {SearchContext} from "../../context/SearchContext"
-import {LoginContext} from "../../context/LoginContext"
-import { useHistory } from "react-router-dom"
+import {SearchContext} from "../../context/SearchContext";
+import {LoginContext} from "../../context/LoginContext";
+import { useHistory } from "react-router-dom";
 
-import logo from "../../images/balkanflix.png"
-import icon from "../../images/usericon.png"
-import searchIcon from "../../images/search.png"
-import CategoriesDropDown from "./CategoriesDropDown"
-import mobileMenu from "../../images/menu.png"
+import logo from "../../images/balkanflix.png";
+import icon from "../../images/usericon.png";
+import searchIcon from "../../images/search.png";
+import CategoriesDropDown from "./CategoriesDropDown";
+import mobileMenu from "../../images/menu.png";
 
 
 
@@ -21,15 +21,15 @@ const HeaderHomePage = () =>{
     const [categories,setCategories] =value8;
 
     const {accountContext,navigation1,value10,mobile} = useContext(LoginContext);
-    const [account,setAccount] = accountContext
+    const [account,setAccount] = accountContext;
     const history=useHistory();
-    const [navigation,setNavigation] = navigation1
+    const [navigation,setNavigation] = navigation1;
     const [movieCategory,setMovieCategory] = value10;
     const [isMobile,setIsmobile] = mobile;
 
     const searchInputRef=useRef();
     const searchInputRefMobile = useRef()
-    const rightBarRef = useRef()
+    const rightBarRef = useRef();
     
     function submitSearchHandler(e){
         e.preventDefault();
@@ -41,26 +41,26 @@ const HeaderHomePage = () =>{
                 setSearchValue(enteredSearch);
                 
             }else{
-                setSearchValue(enteredSearchMobile)
+                setSearchValue(enteredSearchMobile);
             }
         }
         if(navigation===1){
             if(enteredSearch!=="" && enteredSearchMobile===""){
                 setSearchValueSeries(enteredSearch);
-                console.log(searchValueSeries , "!")
+                console.log(searchValueSeries , "!");
             }else{
-                setSearchValueSeries(enteredSearchMobile)
-                console.log(searchValueSeries,"KE")
+                setSearchValueSeries(enteredSearchMobile);
+                console.log(searchValueSeries,"KE");
             }
         }
         
     }
 
     function fetchNewest(){
-        setNavigation(0)
+        setNavigation(0);
         setMovieCategory(0);
         setMoviePage(1);
-        history.replace("/movies")
+        history.replace("/movies");
         
     }
 
@@ -72,32 +72,32 @@ const HeaderHomePage = () =>{
 
     function showCategories(){
         setCategories(true);
-        setIsmobile(false)
+        setIsmobile(false);
     }
     function removeCategories(){
-        setCategories(false)
+        setCategories(false);
     }
     
     function showFavorites(){
-        setNavigation(3)
-        history.replace("/favorites")
+        setNavigation(3);
+        history.replace("/favorites");
     }
 
     function profilePage(){
         setNavigation(4);
-        history.replace("/profile")
+        history.replace("/profile");
     }
     
     function openRightNav(){
         const rightNav = rightBarRef;
-        rightNav.current.style.transform="translate(0vw)"
+        rightNav.current.style.transform="translate(0vw)";
     }
 
     function showCategoriesMobile(){
         setCategories(true);
-        setIsmobile(true)
+        setIsmobile(true);
         const rightNav = rightBarRef;
-        rightNav.current.style.transform="translate(-100vw)"
+        rightNav.current.style.transform="translate(-100vw)";
     }
     return(
         <div>

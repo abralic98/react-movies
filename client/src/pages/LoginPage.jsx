@@ -1,10 +1,10 @@
-import { useHistory } from "react-router-dom"
-import classes from "../pages/LoginPage.module.css"
-import LoginForm from "../components/LoginForm"
-import backgroundIMG from "../images/loginpicture.jpg"
+import { useHistory } from "react-router-dom";
+import classes from "../pages/LoginPage.module.css";
+import LoginForm from "../components/LoginForm";
+import backgroundIMG from "../images/loginpicture.jpg";
 import { useState , useContext } from "react";
-import Axios from "axios"
-import { LoginContext } from "../context/LoginContext"
+import Axios from "axios";
+import { LoginContext } from "../context/LoginContext";
 
 
 const LoginPage = () =>{
@@ -13,14 +13,12 @@ const LoginPage = () =>{
     const [loginName,setLoginName] = value1;
     const [account,setAccount] = accountContext;
     const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1;
-    const [invalidInformation,setInvalidInformation] = useState({invalidInformation1:false,value:""})
+    const [invalidInformation,setInvalidInformation] = useState({invalidInformation1:false,value:""});
     function LoginHandler(loginData){
-        
-
         Axios.get("http://localhost:3001/api/login")
         .then((response)=>{
             const findAccount = response.data.find((item)=>{
-                return (item.accountLoginName===loginData.name && item.accountPassword===loginData.password)
+                return (item.accountLoginName===loginData.name && item.accountPassword===loginData.password);
             })
             if(findAccount===undefined){
                 setInvalidInformation((prev)=>{
@@ -31,18 +29,25 @@ const LoginPage = () =>{
                 })
             }
             if(findAccount!==undefined){
-                setLoginName(loginData.name)
-                setAccount(findAccount)
-                if(findAccount.accountFavorites!==null){
-                    setAccountFavoriteList(JSON.parse(findAccount.accountFavorites))
+                setLoginName(loginData.name);
+                setAccount(findAccount);
+                if(findAccount.accountFavorites!==null){        
+                    setAccountFavoriteList((prev)=>{
+                        return{
+                            favorites:[...prev.favorites,JSON.parse(findAccount.accountFavorites)]
+                        }
+                    })
                 }
                 if(findAccount.accountFavorites===null){
-                    setAccountFavoriteList([])
+                    setAccountFavoriteList((prev)=>{
+                        return{
+                            favorites:prev.favorites=[]
+                        }
+                    })
                 }   
-                history.replace("/movies")
+                history.replace("/movies");
             }
-        })
-        
+        })   
     }
     
     return(

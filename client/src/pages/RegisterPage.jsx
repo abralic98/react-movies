@@ -1,12 +1,12 @@
-import { useHistory } from "react-router-dom"
-import classes from "../pages/RegisterPage.module.css"
-import RegisterForm from "../components/RegisterForm"
-import backgroundIMG from "../images/loginpicture.jpg"
-import {useState} from "react"
-import Axios from "axios"
+import { useHistory } from "react-router-dom";
+import classes from "../pages/RegisterPage.module.css";
+import RegisterForm from "../components/RegisterForm";
+import backgroundIMG from "../images/loginpicture.jpg";
+import {useState} from "react";
+import Axios from "axios";
 const RegisterPage = () =>{
     const history = useHistory();
-    const [duplicate,setDuplicate] = useState({duplicate1:false , value:""})
+    const [duplicate,setDuplicate] = useState({duplicate1:false , value:""});
     
     function RegistrationHandler(registrationData){
         function sendRegistration(){
@@ -29,7 +29,7 @@ const RegisterPage = () =>{
                                 value:prev.value="Change Name"
                             }
                         })
-                        return("changename")
+                        return("changename");
                     }
                     if(item.accountEmail===registrationData.email){
                         setDuplicate((prev)=>{
@@ -38,16 +38,15 @@ const RegisterPage = () =>{
                                 value:prev.value="Change Password"
                             }
                         })
-
-                        return("changepassword")
+                        return("changepassword");
                     }
                 })
                 if(isAccountRegistered===undefined){
-                    sendRegistration()
+                    sendRegistration();
                     Axios.post("http://localhost:3001/api/register", {
                         registerName: registrationData.name,
                         registerPassword: registrationData.password,
-                        registerEmail: registrationData.email
+                        registerEmail: registrationData.email,
                     })
                     .then(
                         history.replace("/login")
@@ -66,10 +65,9 @@ const RegisterPage = () =>{
             {duplicate.duplicate1===true ? (duplicate.value==="Change Name" ? <p className={classes.duplicate}>Account name is allready taken</p> 
             : <p className={classes.duplicate}>Account Email is allready taken</p>) : null}
                 <RegisterForm onRegister={RegistrationHandler}/>
-            </div>
-            
+            </div> 
         </div>
     )
 }
 
-export default RegisterPage
+export default RegisterPage;

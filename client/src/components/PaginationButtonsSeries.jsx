@@ -1,21 +1,17 @@
-import classes from "./home-page-components/Pagination.module.css"
+import classes from "./home-page-components/Pagination.module.css";
 import {useContext} from "react";
 import {SearchContext} from "../context/SearchContext"
 const PaginationButtonsSeries = () =>{
     const {value5}=useContext(SearchContext);
-    
-    
     const [tvShowPage,setTvShowPage] = value5;
 
     function submitNextPage() {
-        setTvShowPage(tvShowPage+1)
+        setTvShowPage(tvShowPage+1);
     }
-
     function submitPreviousPage(){
         if(tvShowPage>1){
-            setTvShowPage(tvShowPage-1)
-        }
-        
+            setTvShowPage(tvShowPage-1);
+        }     
     }
     return(
         <div className={classes.buttonBlock}>
@@ -28,4 +24,4 @@ const PaginationButtonsSeries = () =>{
     )
 }
 
-export default PaginationButtonsSeries
+export default PaginationButtonsSeries;

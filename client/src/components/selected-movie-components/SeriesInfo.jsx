@@ -1,103 +1,87 @@
-import { useContext,useEffect ,useState, useRef } from "react"
-import { MovieContext } from "../../context/MovieContext"
-import classes from "../selected-movie-components/MovieInfo.module.css"
-import slidearrow from "../../images/slidearrow.png"
-import { LoginContext } from "../../context/LoginContext"
-import Axios from "axios"
+import { useContext,useEffect ,useState, useRef } from "react";
+import { MovieContext } from "../../context/MovieContext";
+import classes from "../selected-movie-components/MovieInfo.module.css";
+import slidearrow from "../../images/slidearrow.png";
+import { LoginContext } from "../../context/LoginContext";
+import Axios from "axios";
 
 const SeriesInfo = () =>{
-    const IMAGES_API = "https://image.tmdb.org/t/p/w1280"
+    const IMAGES_API = "https://image.tmdb.org/t/p/w1280";
     const {value3} = useContext(MovieContext);
-    const {navigation1,accountFavoriteList1,accountContext} = useContext(LoginContext)
+    const {navigation1,accountFavoriteList1,accountContext} = useContext(LoginContext);
     const [selectedTvShow,setSelectedTvShow] = value3;
-    const [images,setImages] = useState ([])
-    const [trailer,setTrailer] = useState()
+    const [images,setImages] = useState ([]);
+    const [trailer,setTrailer] = useState();
     const [navigation,setNavigation] = navigation1;
     const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1;
-    const [account,setAccount] = accountContext
+    const [account,setAccount] = accountContext;
     let arrayOfImages = [];
-    const VIDEO_API= `https://api.themoviedb.org/3/tv/${selectedTvShow.id}/videos?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US`
-    const MOREIMAGES_API=`https://api.themoviedb.org/3/tv/${selectedTvShow.id}/images?api_key=dfb7945576fbe047b252003d5e79eef7&page&language=en-US&include_image_language=en,null`
+    const VIDEO_API= `https://api.themoviedb.org/3/tv/${selectedTvShow.id}/videos?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US`;
+    const MOREIMAGES_API=`https://api.themoviedb.org/3/tv/${selectedTvShow.id}/images?api_key=dfb7945576fbe047b252003d5e79eef7&page&language=en-US&include_image_language=en,null`;
     useEffect(() =>{
         fetch(MOREIMAGES_API).then(res => res.json()).then(data =>{   
             for(let i=0; i<data.backdrops.length; i++){
                 arrayOfImages.push(data.backdrops[i].file_path)  
             }
-            setImages(arrayOfImages)
+            setImages(arrayOfImages);
         });
 
-    },[])
+    },[]);
     useEffect(() =>{
         fetch(VIDEO_API).then(res => res.json()).then(data =>{    
             if(data.results.length>0){
-                setTrailer(data.results[0].key)
-            }
-            
-            
+                setTrailer(data.results[0].key);
+            } 
         });
-
-    },[])
+    },[]);
 
     const [imageNumber,setImageNumber] = useState(0);
-    const [animate,setAnimate] = useState(false)
+    const [animate,setAnimate] = useState(false);
     const [direction,setDirection] = useState()
-    const testing= useRef()
+    const testing= useRef();
     let sum=0;
 
     function changeBackground(number){
-        setAnimate(true)
-        setTimeout(animateRefresh,100,number)
+        setAnimate(true);
+        setTimeout(animateRefresh,100,number);
     }
     function animateRefresh(number){
-        setImageNumber(number)
-        setAnimate(false)
+        setImageNumber(number);
+        setAnimate(false);
     }
     function leftArrow(){
         if(sum===0){
-            sum=0
+            sum=0;
         }else{
-            sum=sum-18
+            sum=sum-18;
         }
         testing.current.style.transform=`translate(${-sum}vw)`;
         if(sum<18){
-            sum=18
+            sum=18;
         }
     }
     function rightArrow(){
-        sum=sum+18
+        sum=sum+18;
         testing.current.style.transform=`translate(${-sum}vw)`;
         if(sum>72){
-            sum=72
+            sum=72;
         }
     }
-    function addFavoriteHandler(){
-        /*if(accountFavoriteList!==null){
-            setAccountFavoriteList((prev)=>{
-                return prev=[...prev,selectedMovie]
-            })
-        }else{
-            setAccountFavoriteList([])
-        }
-        console.log(accountFavoriteList)
-        Axios.put("http://localhost:3001/api/edit/account/favorites",{
-            updateFavorites:JSON.stringify(accountFavoriteList),
-            accountLoginName:account.accountLoginName
-        })*/
-        if(accountFavoriteList!==null){
-            setAccountFavoriteList([...accountFavoriteList,selectedTvShow])
-        }else{
-            setAccountFavoriteList([])
-        }
-        console.log(accountFavoriteList)
-        
-        Axios.put("http://localhost:3001/api/edit/account/favorites",{
-            updateFavorites:JSON.stringify(accountFavoriteList),
+    function addFavoriteHandler(){  // 1 ne zapisuje ostalo sve zapisuje u bazu baguje nakon 5og
+        setAccountFavoriteList((prev)=>{
+            console.log([...prev.favorites,selectedTvShow])
+            return{
+                favorites:[...prev.favorites,selectedTvShow]
+            }
+        })
+        Axios.put("http://localhost:3001/api/edit/account/favorites",
+        { 
+            updateFavorites:JSON.stringify(accountFavoriteList.favorites),
             accountLoginName:account.accountLoginName
         })
-        
     }
     function WindowSize(){
-        const [size,setSize] = useState([window.innerWidth,window.innerHeight])
+        const [size,setSize] = useState([window.innerWidth,window.innerHeight]);
         return size;
     }
     const [width,height] = WindowSize();

@@ -2,11 +2,11 @@
 import PaginationButtonsMovie from "../PaginationButtonsMovie";
 import PaginationButtonsSeries from "../PaginationButtonsSeries";
 import { LoginContext } from "../../context/LoginContext";
-import { useContext } from "react"
+import { useContext } from "react";
 
 const Pagination = () =>{
 
-    const {navigation1} = useContext(LoginContext)
+    const {navigation1} = useContext(LoginContext);
     const [navigation,setNavigation] = navigation1;
     return(
         <div>
@@ -19,4 +19,4 @@ const Pagination = () =>{
     
 }
 
-export default Pagination
+export default Pagination;

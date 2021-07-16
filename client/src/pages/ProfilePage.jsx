@@ -1,12 +1,10 @@
 
-import HeaderHomePage from "../components/home-page-components/HeaderHomePage"
+import HeaderHomePage from "../components/home-page-components/HeaderHomePage";
 import AboutThisApp from "../components/profile-page-components/AboutThisApp";
 import EditProfileForm from "../components/profile-page-components/EditProfileForm";
 import UserInfoBlock from "../components/profile-page-components/UserInfoBlock";
 import { MovieProvider } from "../context/SearchContext";
-import classes from "./ProfilePage.module.css"
-
-
+import classes from "./ProfilePage.module.css";
 
 const ProfilePage = () =>{
     return (

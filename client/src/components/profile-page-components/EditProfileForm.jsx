@@ -1,17 +1,16 @@
-import Axios from "axios"
-import classes from "./EditProfileForm.module.css"
-import { useRef, useState, useContext } from "react"
-import { LoginContext } from "../../context/LoginContext"
-import { useHistory } from "react-router"
+import Axios from "axios";
+import classes from "./EditProfileForm.module.css";
+import { useRef, useState, useContext } from "react";
+import { LoginContext } from "../../context/LoginContext";
+import { useHistory } from "react-router";
 const EditProfileForm = () =>{
-    const enteredLoginName = useRef();
     const enteredName = useRef();
     const enteredEmail = useRef();
     const enteredPassword = useRef();
     const enteredAge = useRef();
     const enteredAvatar = useRef();
     const {value1, accountContext, editingProfile, navigation1} = useContext(LoginContext);
-    const [editProfile,setEditProfile] = editingProfile
+    const [editProfile,setEditProfile] = editingProfile;
     const [loginName,setLoginName] = value1;
     const [account,setAccount] = accountContext;
     const [navigation,setNavigation] = navigation1;
@@ -38,14 +37,14 @@ const EditProfileForm = () =>{
                 accountAge:enteredAge.current.value,
                 accountAvatar:enteredAvatar.current.value
             })
-            history.replace("/login")
+            history.replace("/login");
         }
-        setEditProfile(false)
+        setEditProfile(false);
         setNavigation(0);
             
     }
     function cancelEdit(){
-        setEditProfile(false)
+        setEditProfile(false);
     }
     function WindowSize(){
         const [size,setSize] = useState([window.innerWidth,window.innerHeight])

@@ -1,21 +1,17 @@
-import classes from "./home-page-components/Pagination.module.css"
+import classes from "./home-page-components/Pagination.module.css";
 import {useContext} from "react";
-import {SearchContext} from "../context/SearchContext"
+import {SearchContext} from "../context/SearchContext";
 const PaginationButtonsMovie = () =>{
     const {value4}=useContext(SearchContext);
-    
-    
     const [page,setPage] = value4;
 
     function submitNextPage() {
-        setPage(page+1)
+        setPage(page+1);
     }
-
     function submitPreviousPage(){
         if(page>1){
-            setPage(page-1)
-        }
-        
+            setPage(page-1);
+        }   
     }
     return(
         <div className={classes.buttonBlock}>
@@ -28,4 +24,4 @@ const PaginationButtonsMovie = () =>{
     )
 }
 
-export default PaginationButtonsMovie
+export default PaginationButtonsMovie;

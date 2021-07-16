@@ -1,21 +1,21 @@
-import classes from "./MovieItem.module.css"
+import classes from "./MovieItem.module.css";
 import { useContext ,useEffect } from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import { MovieContext } from "../../context/MovieContext";
 import { LoginContext } from "../../context/LoginContext";
-const IMAGES_API = "https://image.tmdb.org/t/p/w1280"
+const IMAGES_API = "https://image.tmdb.org/t/p/w1280";
 const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,id}) =>{
     
-    const {value2,value3} = useContext(MovieContext)
+    const {value2,value3} = useContext(MovieContext);
     const [selectedMovie,setSelectedMovie] = value2;
     const [selectedTvShow,setSelectedTvShow] = value3;
     const history =useHistory();
     const {navigation1} = useContext (LoginContext);
-    const [navigation,setNavigation] = navigation1
+    const [navigation,setNavigation] = navigation1;
     
     function selectMovie(){
         
-        setSelectedMovie((prev)=> {
+        setSelectedMovie((prev)=> { 
             return {
                 title:prev.title=title,
                 poster_path:prev.poster_path=poster_path,
@@ -26,11 +26,9 @@ const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,i
                 id:prev.id=id
             }
         })
-        console.log(selectedMovie.title)
-        history.replace("/movies/movie")
+        history.replace("/movies/movie");
     }
     function selectTvShow(){
-        console.log(selectedTvShow)
         setSelectedTvShow((prev)=> {
             return {
                 title:prev.title=title,
@@ -42,7 +40,7 @@ const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,i
                 id:prev.id=id
             }
         })
-        history.replace("/tvshows/tvshow")
+        history.replace("/tvshows/tvshow");
     }
  
     return(

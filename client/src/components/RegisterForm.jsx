@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import classes from "../components/RegisterForm.module.css"
+import { Link } from "react-router-dom";
+import classes from "../components/RegisterForm.module.css";
 import { useRef } from "react";
 const RegisterForm = (props) =>{
     const nameInputRef = useRef();
@@ -8,7 +8,6 @@ const RegisterForm = (props) =>{
 
     function submitRegistration(e){
         e.preventDefault();
-
         const enteredName = nameInputRef.current.value;
         const enteredEmail =  emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
@@ -18,7 +17,6 @@ const RegisterForm = (props) =>{
             email:enteredEmail,
             password:enteredPassword
         }
-
         props.onRegister(registrationData)
     }
     return(
@@ -50,4 +48,4 @@ const RegisterForm = (props) =>{
     )
 }
 
-export default RegisterForm
+export default RegisterForm;

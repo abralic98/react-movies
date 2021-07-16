@@ -1,8 +1,8 @@
 
-import HeaderHomePage from "../components/home-page-components/HeaderHomePage"
-import SeriesInfo from "../components/selected-movie-components/SeriesInfo"
-import { MovieProvider } from "../context/SearchContext"
-import classes from "./SelectedMoviePage.module.css"
+import HeaderHomePage from "../components/home-page-components/HeaderHomePage";
+import SeriesInfo from "../components/selected-movie-components/SeriesInfo";
+import { MovieProvider } from "../context/SearchContext";
+import classes from "./SelectedMoviePage.module.css";
 const SelectedMoviePage = () =>{
     return (
         <div className={classes.body}>
@@ -10,7 +10,6 @@ const SelectedMoviePage = () =>{
                 <HeaderHomePage/>
                 <SeriesInfo/>         
             </MovieProvider>
-            
         </div>
     )
 }

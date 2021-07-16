@@ -1,25 +1,24 @@
-import backgroundIMG from "../images/loginpicture.jpg"
-import classes from "./HomePage.module.css"
-import logo from "../images/balkanflix.png"
-import tmdb from "../images/tmdb.svg"
-import pitch from "../video/pitch.mp4"
-import mail from "../images/email-icon.png"
-import {useRef} from "react"
-import { useHistory } from "react-router-dom"
+import backgroundIMG from "../images/loginpicture.jpg";
+import classes from "./HomePage.module.css";
+import logo from "../images/balkanflix.png";
+import tmdb from "../images/tmdb.svg";
+import pitch from "../video/pitch.mp4";
+import mail from "../images/email-icon.png";
+import {useRef} from "react";
+import { useHistory } from "react-router-dom";
 const HomePage = ()=>{
-    
     const history = useHistory()
     function getStarted(){
-        history.replace("/register")
+        history.replace("/register");
     }
-
-    const nameInputRef = useRef()
-    const mailInputRef = useRef()
-    const subjectInputRef = useRef()
-    const messageInputRef = useRef()
+    
+    const nameInputRef = useRef();
+    const mailInputRef = useRef();
+    const subjectInputRef = useRef();
+    const messageInputRef = useRef();
     
 function sendMailCustomer(e){
-    e.preventDefault()
+    e.preventDefault();
     const name = nameInputRef.current.value;
     const email = mailInputRef.current.value;
     sendMailToMe();
@@ -38,13 +37,12 @@ function sendMailCustomer(e){
         subjectInputRef.current.value="",
         messageInputRef.current.value=""
     )
-    
 }
 function sendMailToMe(){
     const name = nameInputRef.current.value;
     const email = mailInputRef.current.value;
     const subject = subjectInputRef.current.value;
-    const message = messageInputRef.current.value
+    const message = messageInputRef.current.value;
 
     window.Email.send({
         Host : "smtp.gmail.com",

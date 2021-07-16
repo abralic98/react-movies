@@ -1,10 +1,10 @@
-import { Switch , Route } from "react-router-dom"
-import MoviesPage from "./pages/MoviesPage"
+import { Switch , Route } from "react-router-dom";
+import MoviesPage from "./pages/MoviesPage";
 import './App.css';
-import LoginPage from "./pages/LoginPage"
-import RegisterPage from "./pages/RegisterPage"
-import TVshowsPage from "./pages/TVshowsPage"
-import HomePage from "./pages/HomePage"
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import TVshowsPage from "./pages/TVshowsPage";
+import HomePage from "./pages/HomePage";
 import SelectedMoviePage from "./pages/SelectedMoviePage";
 import SelectedSeriesPage from "./pages/SelectedSeriesPage";
 import ProfilePage from "./pages/ProfilePage";

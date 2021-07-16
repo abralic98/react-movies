@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import classes from "../components/LoginForm.module.css"
+import { Link } from "react-router-dom";
+import classes from "../components/LoginForm.module.css";
 import { useRef } from "react";
 
 const LoginForm = (props) =>{
@@ -45,4 +45,4 @@ const LoginForm = (props) =>{
     )
 }
 
-export default LoginForm
+export default LoginForm;

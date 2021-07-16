@@ -1,107 +1,121 @@
 
-import { useContext,useEffect ,useState, useRef } from "react"
-import { MovieContext } from "../../context/MovieContext"
-import classes from "../selected-movie-components/MovieInfo.module.css"
-import slidearrow from "../../images/slidearrow.png"
-import { LoginContext } from "../../context/LoginContext"
-import Axios from "axios"
-import { SearchContext } from "../../context/SearchContext"
+import { useContext,useEffect ,useState, useRef } from "react";
+import { MovieContext } from "../../context/MovieContext";
+import classes from "../selected-movie-components/MovieInfo.module.css";
+import slidearrow from "../../images/slidearrow.png";
+import { LoginContext } from "../../context/LoginContext";
+import Axios from "axios";
+import { SearchContext } from "../../context/SearchContext";
 
 const MovieInfo = () =>{
-    const IMAGES_API = "https://image.tmdb.org/t/p/w1280"
-    const {value2} = useContext(MovieContext);
-    const {navigation1,accountContext,accountFavoriteList1,accountFavoriteItem1} = useContext(LoginContext)
-    const {value} = useContext(SearchContext)
+    
+    const IMAGES_API = "https://image.tmdb.org/t/p/w1280";
+    const {value2,broj} = useContext(MovieContext);
+    const [br,setBr] = broj;
+    const {navigation1,accountContext,accountFavoriteList1} = useContext(LoginContext);
+    const {value} = useContext(SearchContext);
     const [selectedMovie,setSelectedMovie] = value2;
-    const [images,setImages] = useState ([])
-    const [trailer,setTrailer] = useState()
+    const [images,setImages] = useState ([]);
+    const [trailer,setTrailer] = useState();
     const [navigation,setNavigation] = navigation1;
     const [account,setAccount] = accountContext;
     const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1;
-    const [accountFavoriteItem,setAccountFavoriteItem] = accountFavoriteItem1
-    const [movies,setMovies] = value
+    const [movies,setMovies] = value;
     let arrayOfImages = [];
-    const VIDEO_API= `https://api.themoviedb.org/3/movie/${selectedMovie.id}/videos?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US`
-    const MOREIMAGES_API=`https://api.themoviedb.org/3/movie/${selectedMovie.id}/images?api_key=dfb7945576fbe047b252003d5e79eef7&page&language=en-US&include_image_language=en,null`
+    const VIDEO_API= `https://api.themoviedb.org/3/movie/${selectedMovie.id}/videos?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US`;
+    const MOREIMAGES_API=`https://api.themoviedb.org/3/movie/${selectedMovie.id}/images?api_key=dfb7945576fbe047b252003d5e79eef7&page&language=en-US&include_image_language=en,null`;
     useEffect(() =>{
         fetch(MOREIMAGES_API).then(res => res.json()).then(data =>{   
             for(let i=0; i<data.backdrops.length; i++){
-                arrayOfImages.push(data.backdrops[i].file_path)  
+                arrayOfImages.push(data.backdrops[i].file_path);
             }
-            setImages(arrayOfImages)
+            setImages(arrayOfImages);
         });
-
-    },[])
-    useEffect(() =>{
         fetch(VIDEO_API).then(res => res.json()).then(data =>{
             if(data.results.length>0){
-                setTrailer(data.results[0].key)
-            } 
-            
-            
+                setTrailer(data.results[0].key);
+            }             
         });
-
     },[])
+    
 
     const [imageNumber,setImageNumber] = useState(0);
-    const [animate,setAnimate] = useState(false)
-    const [direction,setDirection] = useState()
-    const testing= useRef()
+    const [animate,setAnimate] = useState(false);
+    const [direction,setDirection] = useState();
+    const testing= useRef();
     let sum=0;
 
     function changeBackground(number){
-        setAnimate(true)
-        setTimeout(animateRefresh,100,number)
+        setAnimate(true);
+        setTimeout(animateRefresh,100,number);
     }
     function animateRefresh(number){
-        setImageNumber(number)
-        setAnimate(false)
+        setImageNumber(number);
+        setAnimate(false);
     }
     function leftArrow(){
         if(sum===0){
             sum=0;
         }else{
-            sum=sum-18
+            sum=sum-18;
         }
         
         testing.current.style.transform=`translate(${-sum}vw)`;
         if(sum<18){
-            sum=18
+            sum=18;
         }
     }
     function rightArrow(){
         sum=sum+18
         testing.current.style.transform=`translate(${-sum}vw)`;
         if(sum>72){
-            sum=72
+            sum=72;
         }
     }
 
-    async function addFavoriteHandler(){
-        
-        if(accountFavoriteList!==null){
-            setAccountFavoriteList((prev)=>{
-                console.log(prev,"prev");
-                console.log(selectedMovie,"SELECTED MOVIE")
-                console.log([...prev,selectedMovie],"PREV + SELECTED MOVIE")
-                
-                Axios.put("http://localhost:3001/api/edit/account/favorites",{
-                updateFavorites:JSON.stringify([...prev,selectedMovie]),
-                accountLoginName:account.accountLoginName
-                })
-                return [...prev,selectedMovie]
-            })
-            
-        }else{
-            setAccountFavoriteList((prev)=>{
-                return prev=[...prev,selectedMovie]
-            })
-        }
-        
-        
+    function addFavoriteHandler(){  // 1 ne zapisuje ostalo sve zapisuje u bazu baguje nakon 5og
+        setAccountFavoriteList((prev)=>{
+            console.log(selectedMovie)
+            console.log([...prev.favorites,selectedMovie])
+            return{
+                favorites:[...prev.favorites,selectedMovie]
+            }
+        })
+        Axios.put("http://localhost:3001/api/edit/account/favorites",
+        { 
+            updateFavorites:JSON.stringify(accountFavoriteList.favorites),
+            accountLoginName:account.accountLoginName
+        })
     }
+    /*function addFavoriteHandler(){ // svaki zapisuje u bazu ali duplira
+        setAccountFavoriteList((prev)=>{
+            console.log(prev)
+            console.log([...prev.favorites,selectedMovie])
+            Axios.put("http://localhost:3001/api/edit/account/favorites",
+            { 
+                updateFavorites:JSON.stringify([...prev.favorites,selectedMovie]),
+                accountLoginName:account.accountLoginName
+            })
+            return{
+                favorites:[...prev.favorites,selectedMovie]
+            }
+        })
+    }*/
+    /*useEffect(() => { // just for test
+        console.log(accountFavoriteList, '- Has changed')
+    },[accountFavoriteList])*/
+
+    /*function addFavoriteHandler(e){
+        e.preventDefault();
+        setAccountFavoriteList(prevState => ({
+            favorites: [...prevState.favorites, selectedMovie]
+          }))         
+    }*/
+
+  
+
     function WindowSize(){
-        const [size,setSize] = useState([window.innerWidth,window.innerHeight])
+        const [size,setSize] = useState([window.innerWidth,window.innerHeight]);
         return size;
     }
     const [width,height] = WindowSize();
