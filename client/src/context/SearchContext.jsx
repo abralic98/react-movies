@@ -28,8 +28,7 @@ export const MovieProvider = (props) =>{
     const [searchValueSeries,setSearchValueSeries] = useState();
     const [tvShowPage,setTvShowPage] = useState(1);
     const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1;
-    const [account,setAccount] = accountContext;
-
+    const account = JSON.parse(localStorage.getItem("account"))
 
     useEffect(() =>{
         if(navigation===1 && searchValueSeries===undefined)
@@ -44,6 +43,7 @@ export const MovieProvider = (props) =>{
         if((navigation===0 || navigation===2) && searchValue!==""){
             fetch(SEARCH_MOVIES_API+searchValue).then(res => res.json()).then(data =>{
                 //console.log("movies search");
+                
                 setMovies(data.results);
             });
         }
@@ -99,17 +99,19 @@ export const MovieProvider = (props) =>{
 
     useEffect(() =>{
         if(navigation===3){ // popravit treba ne radi kad nisi logovan
-            Axios.get("http://localhost:3001/api/get/account/favorites")
+            Axios.get("http://116.203.242.253:3002/api/get/account/favorites", {
+                params:{
+                    accountID:account.ID
+                }
+            })
             .then(
                 (response)=>{
-                    const findAccount = response.data.find((item)=>{
-                        return (item.accountLoginName===account.accountLoginName);
-                    })
-                    if(findAccount.accountFavorites!==undefined || findAccount.accountFavorites!==null){
-                        setMovies((prev)=>{
-                            return prev=JSON.parse(findAccount.accountFavorites);
+                    for (let i in response.data){
+                        Axios.get(`https://api.themoviedb.org/3/movie/${response.data[i].movieID}?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US`)
+                        .then((response)=>{
+                        setMovies((prev)=>[...prev, response.data])
                         })
-                    }  
+                    }
                 }
             )
         }     

@@ -27,8 +27,8 @@ const MovieItemList = (props) =>{
     
     return(  
         <div className={classes.list}>
-            {movies!==null ? movies.map(movie => (
-                <MovieItem key={movie.id} {...movie}/>
+            {movies!==null ? movies.map((movie,index) => (
+                <MovieItem key={index} {...movie}/>
             )) : console.log("kek")}
         </div>
     )

@@ -14,7 +14,8 @@ const SeriesInfo = () =>{
     const [trailer,setTrailer] = useState();
     const [navigation,setNavigation] = navigation1;
     const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1;
-    const [account,setAccount] = accountContext;
+    const account = JSON.parse(localStorage.getItem("account"));
+    const [isFavorited, setIsFavorited] = useState(false);
     let arrayOfImages = [];
     const VIDEO_API= `https://api.themoviedb.org/3/tv/${selectedTvShow.id}/videos?api_key=dfb7945576fbe047b252003d5e79eef7&language=en-US`;
     const MOREIMAGES_API=`https://api.themoviedb.org/3/tv/${selectedTvShow.id}/images?api_key=dfb7945576fbe047b252003d5e79eef7&page&language=en-US&include_image_language=en,null`;
@@ -35,6 +36,20 @@ const SeriesInfo = () =>{
         });
     },[]);
 
+    useEffect(()=>{
+        Axios.get(`http://116.203.242.253:3002/api/get/account/favorite`, {
+            params:{
+                ID:account.ID,
+                movieID:selectedTvShow.id
+            }
+        })
+        .then((response)=>{
+            if(response.data!=""){
+                setIsFavorited(true);
+            }
+            console.log(response.data)
+        })
+    },[])
     const [imageNumber,setImageNumber] = useState(0);
     const [animate,setAnimate] = useState(false);
     const [direction,setDirection] = useState()
@@ -67,18 +82,23 @@ const SeriesInfo = () =>{
             sum=72;
         }
     }
-    function addFavoriteHandler(){  // 1 ne zapisuje ostalo sve zapisuje u bazu baguje nakon 5og
-        setAccountFavoriteList((prev)=>{
-            console.log([...prev.favorites,selectedTvShow])
-            return{
-                favorites:[...prev.favorites,selectedTvShow]
+    function addFavoriteHandler(){ 
+        Axios.post("http://116.203.242.253:3002/api/post/account/favorites",
+        { 
+            movieID:selectedTvShow.id,
+            accountID:account.ID
+        })
+        setIsFavorited(true);
+    }
+    function removeFavoriteHandler(){ 
+        Axios.delete("http://116.203.242.253:3002/api/delete/account/favorites",
+        { 
+            params:{
+                movieID:selectedTvShow.id,
+                accountID:account.ID
             }
         })
-        Axios.put("http://localhost:3001/api/edit/account/favorites",
-        { 
-            updateFavorites:JSON.stringify(accountFavoriteList.favorites),
-            accountLoginName:account.accountLoginName
-        })
+        setIsFavorited(false);
     }
     function WindowSize(){
         const [size,setSize] = useState([window.innerWidth,window.innerHeight]);
@@ -138,7 +158,8 @@ const SeriesInfo = () =>{
                     {<div className={classes.yt}>
                         <iframe width="700" height="400" src={`https://www.youtube.com/embed/${trailer}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>}
-                    <div onClick={addFavoriteHandler}className={classes.btnFavorites}>Add to Favorites</div>
+                    {isFavorited!==true ? <div onClick={addFavoriteHandler}className={classes.btnFavorites}>Add to Favorites</div> :
+                    <div onClick={removeFavoriteHandler}className={classes.btnFavorites} style={{backgroundColor:"red"}}>Remove from Favorites</div>}
                 </div>
                 
             </div> : null}
@@ -154,7 +175,8 @@ const SeriesInfo = () =>{
                         {<div className={classes.ytMobile}>
                             <iframe width="500" height="300" src={`https://www.youtube.com/embed/${trailer}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                         </div>}
-                        <div onClick={addFavoriteHandler}className={classes.btnFavorites}>Add to Favorites</div>
+                        {isFavorited!==true ? <div onClick={addFavoriteHandler}className={classes.btnFavorites}>Add to Favorites</div>:
+                        <div onClick={removeFavoriteHandler}className={classes.btnFavorites} style={{backgroundColor:"red"}}>Remove Favorites</div>}
                     </div>
                     {width>900 && width<1000 ? 
                     <div className={classes.slider}>

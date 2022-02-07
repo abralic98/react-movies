@@ -15,8 +15,9 @@ const LoginPage = () =>{
     const [accountFavoriteList,setAccountFavoriteList] = accountFavoriteList1;
     const [invalidInformation,setInvalidInformation] = useState({invalidInformation1:false,value:""});
     function LoginHandler(loginData){
-        Axios.get("http://localhost:3001/api/login")
+        Axios.get("http://116.203.242.253:3002/api/login")
         .then((response)=>{
+            console.log(response.data)
             const findAccount = response.data.find((item)=>{
                 return (item.accountLoginName===loginData.name && item.accountPassword===loginData.password);
             })
@@ -28,24 +29,9 @@ const LoginPage = () =>{
                     }
                 })
             }
-            if(findAccount!==undefined){
-                setLoginName(loginData.name);
-                setAccount(findAccount);
-                if(findAccount.accountFavorites!==null){        
-                    setAccountFavoriteList((prev)=>{
-                        return{
-                            favorites:[...prev.favorites,JSON.parse(findAccount.accountFavorites)]
-                        }
-                    })
-                }
-                if(findAccount.accountFavorites===null){
-                    setAccountFavoriteList((prev)=>{
-                        return{
-                            favorites:prev.favorites=[]
-                        }
-                    })
-                }   
-                history.replace("/movies");
+            if(findAccount!==undefined){  
+                localStorage.setItem("account",JSON.stringify(findAccount))
+                history.push("/movies");
             }
         })   
     }

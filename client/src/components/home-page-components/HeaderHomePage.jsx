@@ -20,8 +20,8 @@ const HeaderHomePage = () =>{
     const [searchValueSeries,setSearchValueSeries] = value9;
     const [categories,setCategories] =value8;
 
-    const {accountContext,navigation1,value10,mobile} = useContext(LoginContext);
-    const [account,setAccount] = accountContext;
+    const {navigation1,value10,mobile} = useContext(LoginContext);
+    const account = JSON.parse(localStorage.getItem("account"))
     const history=useHistory();
     const [navigation,setNavigation] = navigation1;
     const [movieCategory,setMovieCategory] = value10;
@@ -60,14 +60,14 @@ const HeaderHomePage = () =>{
         setNavigation(0);
         setMovieCategory(0);
         setMoviePage(1);
-        history.replace("/movies");
+        history.push("/movies");
         
     }
 
     function tvShows(){
         setNavigation(1);
         setTvShowPage(1);
-        history.replace("/tvshows")
+        history.push("/tvshows")
     }
 
     function showCategories(){
@@ -80,12 +80,12 @@ const HeaderHomePage = () =>{
     
     function showFavorites(){
         setNavigation(3);
-        history.replace("/favorites");
+        history.push("/favorites");
     }
 
     function profilePage(){
         setNavigation(4);
-        history.replace("/profile");
+        history.push("/profile");
     }
     
     function openRightNav(){

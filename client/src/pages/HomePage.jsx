@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 const HomePage = ()=>{
     const history = useHistory()
     function getStarted(){
-        history.replace("/register");
+        history.push("/register");
     }
     
     const nameInputRef = useRef();

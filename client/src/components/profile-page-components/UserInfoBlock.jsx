@@ -10,13 +10,15 @@ const UserInfoBlock = () =>{
     const history = useHistory();
     const { accountContext ,value1, editingProfile, navigation1} = useContext(LoginContext);
     const [account,setAccount] = accountContext;
+    const acc = JSON.parse(localStorage.getItem("account"))
+    console.log(acc)
     const [loginName,setLoginName] = value1;
     const [editProfile,setEditProfile] = editingProfile;
     const [navigation,setNavigation] = navigation1;
 
     function redirectToLogin(){
         setNavigation(0);
-        history.replace("/login");
+        history.push("/login");
     }
     function edit(){
        setEditProfile(true);
@@ -31,16 +33,16 @@ const UserInfoBlock = () =>{
         <div>
             {width>=900?
             <div className={classes.infoBlock}>
-                <h2>Welcome {loginName}</h2>
+                <h2>Welcome {acc.accountLoginName}</h2>
                 <div className={classes.avatarBlock}>
                     <div className={classes.avatar}>
-                        <img src={account.accountAvatar===null || account.accountAvatar==="" ? question : account.accountAvatar} alt="kek" />
+                        <img src={acc.accountAvatar===null || acc.accountAvatar==="" ? question : acc.accountAvatar} alt="kek" />
                     </div>
                 </div>
                 <div className={classes.labels}>
-                    <p>Full Name: {account.accountFullName===null || account.accountFullName==="" ? "No name provided" : account.accountFullName} </p>
-                    <p>Age: {account.accountAge===null || account.accountAge==="" ? "No age provided" : account.accountAge} </p>
-                    <p>E-mail: {account.accountEmail===null || account.accountEmail==="" ? "no email" : account.accountEmail}</p>
+                    <p>Full Name: {acc.accountFullName===null || acc.accountFullName==="" ? "No name provided" : acc.accountFullName} </p>
+                    <p>Age: {acc.accountAge===null || acc.accountAge==="" ? "No age provided" : acc.accountAge} </p>
+                    <p>E-mail: {acc.accountEmail===null || acc.accountEmail==="" ? "no email" : acc.accountEmail}</p>
                 </div>
                 <div className={classes.buttons}>
                     <button onClick={redirectToLogin}>Change Account</button>
@@ -50,16 +52,16 @@ const UserInfoBlock = () =>{
 
             {width<900 && editProfile===false?
             <div className={classes.infoBlock}>
-                <h2>Welcome {loginName}</h2>
+                <h2>Welcome {acc.accountLoginName}</h2>
                 <div className={classes.avatarBlock}>
                     <div className={classes.avatar}>
-                        <img src={account.accountAvatar===null || account.accountAvatar==="" ? question : account.accountAvatar} alt="kek" />
+                        <img src={acc.accountAvatar===null || acc.accountAvatar==="" ? question : acc.accountAvatar} alt="kek" />
                     </div>
                 </div>
                 <div className={classes.labels}>
-                    <p>Full Name: {account.accountFullName===null || account.accountFullName==="" ? "No name provided" : account.accountFullName} </p>
-                    <p>Age: {account.accountAge===null || account.accountAge==="" ? "No age provided" : account.accountAge} </p>
-                    <p>E-mail: {account.accountEmail===null || account.accountEmail==="" ? "no email" : account.accountEmail}</p>
+                    <p>Full Name: {acc.accountFullName===null || acc.accountFullName==="" ? "No name provided" : acc.accountFullName} </p>
+                    <p>Age: {acc.accountAge===null || acc.accountAge==="" ? "No age provided" : acc.accountAge} </p>
+                    <p>E-mail: {acc.accountEmail===null || acc.accountEmail==="" ? "no email" : acc.accountEmail}</p>
                 </div>
                 <div className={classes.buttons}>
                     <button onClick={edit}>Edit Profile</button>

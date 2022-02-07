@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { MovieContext } from "../../context/MovieContext";
 import { LoginContext } from "../../context/LoginContext";
 const IMAGES_API = "https://image.tmdb.org/t/p/w1280";
-const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,id}) =>{
+const MovieItem = (props) =>{
     
     const {value2,value3} = useContext(MovieContext);
     const [selectedMovie,setSelectedMovie] = value2;
@@ -17,44 +17,44 @@ const MovieItem = ({title,poster_path,overview,vote_average,name,backdrop_path,i
         
         setSelectedMovie((prev)=> { 
             return {
-                title:prev.title=title,
-                poster_path:prev.poster_path=poster_path,
-                overview:prev.overview=overview,
-                vote_average:prev.vote_average=vote_average,
-                name:prev.name=name,
-                backdrop_path:prev.backdrop_path=backdrop_path,
-                id:prev.id=id
+                title:prev.title=props.title,
+                poster_path:prev.poster_path=props.poster_path,
+                overview:prev.overview=props.overview,
+                vote_average:prev.vote_average=props.vote_average,
+                name:prev.name=props.name,
+                backdrop_path:prev.backdrop_path=props.backdrop_path,
+                id:prev.id=props.id
             }
         })
-        history.replace("/movies/movie");
+        history.push("/movies/movie");
     }
     function selectTvShow(){
         setSelectedTvShow((prev)=> {
             return {
-                title:prev.title=title,
-                poster_path:prev.poster_path=poster_path,
-                overview:prev.overview=overview,
-                vote_average:prev.vote_average=vote_average,
-                name:prev.name=name,
-                backdrop_path:prev.backdrop_path=backdrop_path,
-                id:prev.id=id
+                title:prev.title=props.title,
+                poster_path:prev.poster_path=props.poster_path,
+                overview:prev.overview=props.overview,
+                vote_average:prev.vote_average=props.vote_average,
+                name:prev.name=props.name,
+                backdrop_path:prev.backdrop_path=props.backdrop_path,
+                id:prev.id=props.id
             }
         })
-        history.replace("/tvshows/tvshow");
+        history.push("/tvshows/tvshow");
     }
  
     return(
-        <div onClick={navigation===0 || navigation===2 || navigation===3 ? (title===undefined ? selectTvShow : selectMovie) : selectTvShow}className={classes.movieBlock}>
+        <div onClick={navigation===0 || navigation===2 || navigation===3 ? (props.title===undefined ? selectTvShow : selectMovie) : selectTvShow}className={classes.movieBlock}>
             <div>
-                <img src={IMAGES_API+poster_path} alt={title} />
+                <img src={IMAGES_API+props.poster_path} alt={props.title} />
             </div>
             <div className={classes.title_rating}>
-                <p className={classes.title}>{navigation===0 || navigation===2 || navigation===3 ? (title===undefined ? name : title) : name }</p>
-                <p className={classes.rating}>{vote_average}{<span>&#9733;</span>}</p>
+                <p className={classes.title}>{navigation===0 || navigation===2 || navigation===3 ? (props.title===undefined ? props.name : props.title) : props.name }</p>
+                <p className={classes.rating}>{props.vote_average}{<span>&#9733;</span>}</p>
             </div>
             <div className={classes.overview}>
                 <p>Overview:</p>
-                <p>{overview}</p>
+                <p>{props.overview}</p>
             </div>
             
         </div>

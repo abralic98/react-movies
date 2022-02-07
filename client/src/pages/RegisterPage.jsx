@@ -19,7 +19,7 @@ const RegisterPage = () =>{
                 Subject : "BalkanFlix Team",
                 Body : `Thank you for registring on BalkanFlix.com.`
             })}
-            Axios.get("http://localhost:3001/api/accounts")
+            Axios.get("http://116.203.242.253:3002/api/accounts")
             .then((response)=>{
                 const isAccountRegistered = response.data.find((item)=>{
                     if(item.accountLoginName===registrationData.name){
@@ -29,7 +29,7 @@ const RegisterPage = () =>{
                                 value:prev.value="Change Name"
                             }
                         })
-                        return("changename");
+
                     }
                     if(item.accountEmail===registrationData.email){
                         setDuplicate((prev)=>{
@@ -38,18 +38,17 @@ const RegisterPage = () =>{
                                 value:prev.value="Change Password"
                             }
                         })
-                        return("changepassword");
                     }
                 })
                 if(isAccountRegistered===undefined){
                     sendRegistration();
-                    Axios.post("http://localhost:3001/api/register", {
+                    Axios.post("http://116.203.242.253:3002/api/register", {
                         registerName: registrationData.name,
                         registerPassword: registrationData.password,
                         registerEmail: registrationData.email,
                     })
                     .then(
-                        history.replace("/login")
+                        history.push("/login")
                     )
                 }
         }) 

@@ -12,32 +12,28 @@ const EditProfileForm = () =>{
     const {value1, accountContext, editingProfile, navigation1} = useContext(LoginContext);
     const [editProfile,setEditProfile] = editingProfile;
     const [loginName,setLoginName] = value1;
-    const [account,setAccount] = accountContext;
+    const account = JSON.parse(localStorage.getItem("account"))
     const [navigation,setNavigation] = navigation1;
 
     const history = useHistory();
    
     function submitChanges(e){
         e.preventDefault()
-        if(enteredPassword.current.value!=="" && enteredEmail.current.value!=="" && enteredName.current.value!=="" && enteredAge.current.value!=="" ){
-            Axios.put("http://localhost:3001/api/edit/account", {
+        console.log(account.ID)
+        if(enteredPassword.current.value!=="" && enteredEmail.current.value!=="" && enteredName.current.value!=="" && enteredAge.current.value!=="" && enteredAvatar.current.value!=="" ){
+            Axios.put("http://116.203.242.253:3002/api/edit/account", null , {
                 //updateName: enteredLoginName.current.value,
-                updatePassword: enteredPassword.current.value,
-                updateEmail: enteredEmail.current.value,
-                updateFullName: enteredName.current.value,
-                updateAccountAge: enteredAge.current.value,
-                accountLoginName: loginName,
-                updateAvatar : enteredAvatar.current.value
+                params:{
+                    updatePassword: enteredPassword.current.value,
+                    updateEmail: enteredEmail.current.value,
+                    updateFullName: enteredName.current.value,
+                    updateAccountAge: enteredAge.current.value,
+                    ID: account.ID,
+                    updateAvatar : enteredAvatar.current.value
+                }
              })
-            setAccount({
-                //accountLoginName:enteredLoginName.current.value,
-                accountPassword:enteredPassword.current.value,
-                accountEmail:enteredEmail.current.value,
-                accountFullName:enteredName.current.value,
-                accountAge:enteredAge.current.value,
-                accountAvatar:enteredAvatar.current.value
-            })
-            history.replace("/login");
+             localStorage.removeItem("account");
+            history.push("/login");
         }
         setEditProfile(false);
         setNavigation(0);
