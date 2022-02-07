@@ -20,7 +20,7 @@ This project is not in active development.
 - React.js
 - Node.js
 - Express
-- MySql/MariDB
+- MySql/MariaDB
 
 ## Bugs
 
