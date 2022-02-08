@@ -26,6 +26,7 @@ This project is not in active development.
 
 - Register and log in to have access to all features
 - Using features without logging in will sometimes cause unexpected behaviour
+- App will not fetch category if you use back button, its getting movies only if you manually click on movies, tvshows or categories (this will get fixed when i have time)
 
 
 ## Environment
